@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
 			positionIndex--;
 			if (positionIndex < 0) positionIndex = 3;
 			player.destination = playerPositions[positionIndex];
-			faceTarget();
 		}
 		
 		if (Input.GetKeyDown("d"))
@@ -57,22 +56,13 @@ public class PlayerMovement : MonoBehaviour
 			positionIndex++;
 			if (positionIndex > 3) positionIndex = 0;
 			player.destination = playerPositions[positionIndex];
-			faceTarget();
 		}
     }
 	
 	// Gradually turn the player towards the bear
 	void faceBear()
 	{
-		Vector3 moveDirection = new Vector3(bear.transform.position.x, bear.transform.position.y, bear.transform.position.z);
-		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-		player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-	}
-	
-	// Player faces direction they are moving in
-	void faceTarget()
-	{
-		Vector3 moveDirection = new Vector3(player.velocity.x, player.velocity.y, player.velocity.z);
+		Vector3 moveDirection = bear.transform.position - player.transform.position;
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
 		player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
 	}
