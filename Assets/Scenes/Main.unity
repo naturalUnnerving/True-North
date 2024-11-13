@@ -835,7 +835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 825321716399201129, guid: b7dadb9c5ccbc274aaab694df15b4230, type: 3}
       propertyPath: m_Name
-      value: Hachiko
+      value: Dog
       objectReference: {fileID: 0}
     - target: {fileID: 5490522726724310372, guid: b7dadb9c5ccbc274aaab694df15b4230, type: 3}
       propertyPath: m_LocalPosition.x
