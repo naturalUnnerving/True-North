@@ -6,7 +6,7 @@ public class Player
 {
 	// Player stats (for now just for the sake of testing). refer to CharacterStat constructor
 	public CharacterStat HP;
-	public CharacterStat stamina;
+	public CharacterStat AP;
 	public CharacterStat attack;
 	public CharacterStat defense;
 	public CharacterStat speed;
@@ -15,7 +15,7 @@ public class Player
 	public Player()
 	{
 		HP = new CharacterStat(100f);
-		stamina = new CharacterStat(40f);
+		AP = new CharacterStat(7f);
 		attack = new CharacterStat(30f);
 		defense = new CharacterStat(20f);
 		speed = new CharacterStat(30f);

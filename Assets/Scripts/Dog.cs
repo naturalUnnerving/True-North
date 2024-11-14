@@ -6,7 +6,7 @@ public class Dog
 {
 	// Dog stats (for now just for the sake of testing)
 	public CharacterStat HP;
-	public CharacterStat stamina;
+	public CharacterStat AP;
 	public CharacterStat attack;
 	public CharacterStat defense;
 	public CharacterStat speed;
@@ -15,7 +15,7 @@ public class Dog
 	public Dog()
 	{
 		HP = new CharacterStat(75f);
-		stamina = new CharacterStat(60f);
+		AP = new CharacterStat(14f);
 		attack = new CharacterStat(20f);
 		defense = new CharacterStat(20f);
 		speed = new CharacterStat(40f);

@@ -11,9 +11,9 @@ public class Battle : MonoBehaviour
 	//[SerializeField] private bool bearIdle;
 	
 	// Player, dog and bear battle stamina
-	[SerializeField] private float playerStaminaGauge;
-	[SerializeField] private float dogStaminaGauge;
-	[SerializeField] private float bearStaminaGauge;
+	[SerializeField] private float playerAPGauge;
+	[SerializeField] private float dogAPGauge;
+	[SerializeField] private float bearAPGauge;
 	
 	// Player, dog and bear initial health
 	[SerializeField] private float playerHP;
@@ -24,6 +24,25 @@ public class Battle : MonoBehaviour
 	Player player = new Player();
 	Dog dog = new Dog();
 	Bear bear = new Bear();
+	
+	//Creates enumerators for the different game states
+	public enum HealthState
+    {
+        alive = 0,
+        playerDead = 1,
+        bearDead = 2
+    }
+	
+	public enum Turn
+    {
+        player = 0,
+		dog = 1,
+        bear = 2
+    }
+	
+	// Helath state and turn variable
+	HealthState currentHealthState = HealthState.alive;
+	Turn currentTurn;
 	
     // Start is called before the first frame update
     void Start()
@@ -37,10 +56,14 @@ public class Battle : MonoBehaviour
 		//dogIdle = true;
 		//bearIdle = true;
 		
+		// Set player to alive and to have first turn
+		currentHealthState = HealthState.alive;
+		currentTurn = Turn.player;
+		
 		// Initialize stamina gauges
-		playerStaminaGauge = 0f;
-		dogStaminaGauge = 0f;
-		bearStaminaGauge = 0f;
+		playerAPGauge = player.AP.BaseValue;
+		dogAPGauge = dog.AP.BaseValue;
+		bearAPGauge = bear.AP.BaseValue;
 		
 		// Initialize actor HP, drawn from each charachter class
 		playerHP = player.HP.BaseValue;
@@ -51,19 +74,60 @@ public class Battle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check for victory and gameOver
-		//if (playerHP <= 0f && dogHP <= 0f) gameOver();
-		//if (bearHP <= 0f) victory();
+		//Checks Players current Health State
+        if (playerHP != 0 && dogHP != 0)
+        {
+            currentHealthState = HealthState.alive;
+        }
+        if (playerHP == 0 || dogHP == 0)
+        {
+            currentHealthState = HealthState.playerDead;
+        } 
+        else if (bearHP == 0)
+        {
+            currentHealthState = HealthState.bearDead;
+        }
 		
-		// Increase actor stamina gauges
-		if (playerStaminaGauge < 100f) playerStaminaGauge += player.stamina.BaseValue * Time.deltaTime;
-		if (dogStaminaGauge < 100f) dogStaminaGauge += dog.stamina.BaseValue * Time.deltaTime;
-		if (bearStaminaGauge < 100f) bearStaminaGauge += bear.stamina.BaseValue * Time.deltaTime;
+        //Switches case of currentHealthState when the above cases trigger
+        switch (currentHealthState)
+        {
+            case HealthState.alive:
+                // alive
+                break;
+            case HealthState.playerDead:
+                gameOver();
+                break;
+            case HealthState.bearDead:
+                victory();
+                break;
+        }
 		
-		// Run action loops
-		playerAction();
-		dogAction();
-		bearAction();
+		// Set turns
+		if (playerAPGauge <= 0f)
+		{
+			playerAPGauge = player.AP.BaseValue;
+			currentTurn = Turn.dog;
+		}
+		
+		if (dogAPGauge <= 0f)
+		{
+			dogAPGauge = dog.AP.BaseValue;
+			currentTurn = Turn.bear;
+		}
+		
+		if (bearAPGauge <= 0f)
+		{
+			bearAPGauge = bear.AP.BaseValue;
+			currentTurn = Turn.player;
+		}
+		
+		// Switch case for turn
+		switch (currentTurn)
+		{
+			case Turn.player: playerAction(); break;
+			case Turn.dog: dogAction(); break;
+			case Turn.bear: bearAction(); break;
+		}
 	}
 	
 	// Communicates with UI to execute a player action. for now use R, F to call fire and reload
@@ -71,29 +135,15 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("r"))
 		{
-			if (playerStaminaGauge >= 100f)
-			{
-				playerStaminaGauge = 0f;
-				player.Fire();
-			}
-			else
-			{
-				Debug.Log("not enough stamina!");
-			}
+			playerAPGauge -= 3f;
+			player.Fire();
 		}
 		
 		// Maybe allow reload while idle?
 		if (Input.GetKeyDown("f"))
 		{
-			if (playerStaminaGauge >= 100f)
-			{
-				playerStaminaGauge = 0f;
-				player.Reload();
-			}
-			else
-			{
-				Debug.Log("not enough stamina!");
-			}
+			playerAPGauge -= 2f;
+			player.Reload();
 		}
 		
 		// TO DO: set up movement calls
@@ -104,28 +154,14 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("t"))
 		{
-			if (dogStaminaGauge >= 100f)
-			{
-				dogStaminaGauge = 0f;
-				dog.Guard();
-			}
-			else
-			{
-				Debug.Log("not enough stamina!");
-			}
+			dogAPGauge -= 3f;
+			dog.Guard();
 		}
 		
 		if (Input.GetKeyDown("g"))
 		{
-			if (dogStaminaGauge >= 100f)
-			{
-				dogStaminaGauge = 0f;
-				dog.Bite();
-			}
-			else
-			{
-				Debug.Log("not enough stamina!");
-			}
+			dogAPGauge -= 5f;
+			dog.Bite();
 		}
 		
 		// TO DO: set up movement calls
@@ -134,11 +170,8 @@ public class Battle : MonoBehaviour
 	// bear actions are called by bear AI. For now just autorun Swipe
 	void bearAction()
 	{
-		if (bearStaminaGauge >= 100f)
-		{
-			bearStaminaGauge = 0f;
-			bear.Swipe();
-		}
+		//bearAPGauge -= 0f;
+		//bear.Swipe();
 		
 		// TO DO: set up bear combat AI to decide whether to turn, growl or attack
 	}
