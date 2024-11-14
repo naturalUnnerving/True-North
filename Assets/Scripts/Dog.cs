@@ -4,30 +4,39 @@ using TrueNorth.CharacterStats;
 // Main dog class
 public class Dog
 {
-	// Reference to gameobject for interactions
-	[SerializeField] private UnityEngine.AI.NavMeshAgent dog;
-	
 	// Dog stats (for now just for the sake of testing)
-	public CharacterStat HP = new CharacterStat(75f);
-	public CharacterStat stamina = new CharacterStat(60f);
-	public CharacterStat attack = new CharacterStat(20f);
-	public CharacterStat defense = new CharacterStat(20f);
-	public CharacterStat speed = new CharacterStat(40f);
+	public CharacterStat HP;
+	public CharacterStat stamina;
+	public CharacterStat attack;
+	public CharacterStat defense;
+	public CharacterStat speed;
+	
+	// Contructor
+	public Dog()
+	{
+		HP = new CharacterStat(75f);
+		stamina = new CharacterStat(60f);
+		attack = new CharacterStat(20f);
+		defense = new CharacterStat(20f);
+		speed = new CharacterStat(40f);
+	}
 	
     // Dog bark/guard (unable to pass)
-	void Guard()
+	public void Guard()
 	{
-		
+		// DEBUG CALL
+		Debug.Log("DOG GUARD");
 	}
 	
 	// Dog bite
-	void Bite()
+	public void Bite()
 	{
-		
+		// DEBUG CALL
+		Debug.Log("DOG BITE");
 	}
 	
 	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	void Move()
+	public void Move()
 	{
 		
 	}

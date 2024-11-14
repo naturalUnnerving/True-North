@@ -699,6 +699,56 @@ MonoBehaviour:
   positionIndex: 0
   bear: {fileID: 192811791}
   player: {fileID: 231046699}
+--- !u!1 &1989869671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989869672}
+  - component: {fileID: 1989869673}
+  m_Layer: 0
+  m_Name: Battle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1989869672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989869671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7578495, y: 2.399469, z: -1.7744453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989869673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989869671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a557a2909c83b740a3638af81423634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStaminaGauge: 0
+  dogStaminaGauge: 0
+  bearStaminaGauge: 0
+  playerHP: 0
+  dogHP: 0
+  bearHP: 0
 --- !u!1001 &3665848827789846561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -898,3 +948,4 @@ SceneRoots:
   - {fileID: 5660124948701151919}
   - {fileID: 7096444494194715388}
   - {fileID: 3665848827789846561}
+  - {fileID: 1989869672}
