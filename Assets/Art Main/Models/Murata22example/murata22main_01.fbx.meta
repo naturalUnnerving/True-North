@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5b3cf29c7d5e414bb13cdc1e0d026f1
+guid: 3afe847a28d3c0846812be9d4007106d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Murata22
     second: {fileID: 2100000, guid: ccda34ae6d077de4685b9595cfe047ac, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Murata22lined
-    second: {fileID: 2100000, guid: a8dede998c3846e408bf8cd00b0fbf87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
