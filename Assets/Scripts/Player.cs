@@ -37,7 +37,13 @@ public class Player
 	}
 	
 	// Player move, one relocation takes a turn. place code from playermovement.cs
-	public void Move()
+	public void MoveLeft()
+	{
+		
+	}
+	
+	// Player move, one relocation takes a turn. place code from playermovement.cs
+	public void MoveRight()
 	{
 		
 	}

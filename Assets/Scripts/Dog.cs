@@ -36,7 +36,25 @@ public class Dog
 	}
 	
 	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	public void Move()
+	public void MoveLeft()
+	{
+		
+	}
+	
+	// Dog move, one relocation takes a turn. place code from dogmovement.cs
+	public void MoveRight()
+	{
+		
+	}
+	
+	// Dog move, one relocation takes a turn. place code from dogmovement.cs
+	public void MoveUp()
+	{
+		
+	}
+	
+	// Dog move, one relocation takes a turn. place code from dogmovement.cs
+	public void MoveDown()
 	{
 		
 	}

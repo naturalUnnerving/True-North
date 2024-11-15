@@ -34,8 +34,14 @@ public class Bear
 		Debug.Log("BEAR SWIPE");
 	}
 	
-	// Dog move, one relocation takes a turn. place code from bearmovement.cs
-	public void Turn()
+	// Bear Turn, one relocation takes a turn. place code from bearmovement.cs
+	public void TurnLeft()
+	{
+		
+	}
+	
+	// Bear Turn, one relocation takes a turn. place code from bearmovement.cs
+	public void TurnRight()
 	{
 		
 	}

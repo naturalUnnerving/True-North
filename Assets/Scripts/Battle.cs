@@ -5,11 +5,6 @@ using UnityEngine;
 // Main battle scene
 public class Battle : MonoBehaviour
 {
-	// Battle system flags
-	//[SerializeField] private bool playerIdle;
-	//[SerializeField] private bool dogIdle;
-	//[SerializeField] private bool bearIdle;
-	
 	// Player, dog and bear battle stamina
 	[SerializeField] private float playerAPGauge;
 	[SerializeField] private float dogAPGauge;
@@ -41,7 +36,7 @@ public class Battle : MonoBehaviour
     }
 	
 	// Helath state and turn variable
-	HealthState currentHealthState = HealthState.alive;
+	HealthState currentHealthState;
 	Turn currentTurn;
 	
     // Start is called before the first frame update
@@ -50,11 +45,6 @@ public class Battle : MonoBehaviour
         /* Instanciate actors, play battle music (when music system is set up),
 		play opening animations, dialogue, etc...
 		Run when battle scene loads */
-		
-		// Initialize system flags
-		//playerIdle = true;
-		//dogIdle = true;
-		//bearIdle = true;
 		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
@@ -135,18 +125,59 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("r"))
 		{
-			playerAPGauge -= 3f;
-			player.Fire();
+			if (playerAPGauge >= 3f)
+			{
+				playerAPGauge -= 3f;
+				player.Fire();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
 		}
 		
 		// Maybe allow reload while idle?
 		if (Input.GetKeyDown("f"))
 		{
-			playerAPGauge -= 2f;
-			player.Reload();
+			if (playerAPGauge >= 2f)
+			{
+				playerAPGauge -= 2f;
+				player.Reload();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
 		}
 		
-		// TO DO: set up movement calls
+		if (Input.GetKeyDown("a"))
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				player.MoveLeft();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("d"))
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				player.MoveRight();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		// End turn
+		if (Input.GetKeyDown("q")) playerAPGauge = 0f;
 	}
 	
 	// Communicates with UI to execute a dog action, for now use t, g to call guard and bite
@@ -154,26 +185,90 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("t"))
 		{
-			dogAPGauge -= 3f;
-			dog.Guard();
+			if (dogAPGauge >= 3f)
+			{
+				dogAPGauge -= 3f;
+				dog.Guard();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
 		}
 		
 		if (Input.GetKeyDown("g"))
 		{
-			dogAPGauge -= 5f;
-			dog.Bite();
+			if (dogAPGauge >= 5f)
+			{
+				dogAPGauge -= 5f;
+				dog.Bite();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
 		}
 		
-		// TO DO: set up movement calls
+		if (Input.GetKeyDown("left"))
+		{
+			if (dogAPGauge >= 1f)
+			{
+				dogAPGauge -= 1f;
+				dog.MoveLeft();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("right"))
+		{
+			if (dogAPGauge >= 1f)
+			{
+				dogAPGauge -= 1f;
+				dog.MoveRight();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("up"))
+		{
+			if (dogAPGauge >= 1f)
+			{
+				dogAPGauge -= 1f;
+				dog.MoveUp();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("down"))
+		{
+			if (dogAPGauge >= 1f)
+			{
+				dogAPGauge -= 1f;
+				dog.MoveDown();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		// End turn
+		if (Input.GetKeyDown("q")) dogAPGauge = 0f;
 	}
 	
 	// bear actions are called by bear AI. For now just autorun Swipe
 	void bearAction()
 	{
-		//bearAPGauge -= 0f;
-		//bear.Swipe();
-		
-		// TO DO: set up bear combat AI to decide whether to turn, growl or attack
+		// TO DO: implement bear AI
 	}
 	
 	// Show game over screen and send back to title for now
