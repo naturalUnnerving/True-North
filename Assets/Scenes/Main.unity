@@ -743,12 +743,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a557a2909c83b740a3638af81423634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStaminaGauge: 0
-  dogStaminaGauge: 0
-  bearStaminaGauge: 0
+  playerAPGauge: 0
+  dogAPGauge: 0
+  bearAPGauge: 0
   playerHP: 0
   dogHP: 0
   bearHP: 0
+  victoryScreen: VictoryScreen
+  gameOverScreen: GameOverScreen
 --- !u!1001 &3665848827789846561
 PrefabInstance:
   m_ObjectHideFlags: 0

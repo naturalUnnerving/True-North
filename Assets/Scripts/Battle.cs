@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Main battle scene
 public class Battle : MonoBehaviour
@@ -19,9 +20,13 @@ public class Battle : MonoBehaviour
 	Player player = new Player();
 	Dog dog = new Dog();
 	Bear bear = new Bear();
-	
-	//Creates enumerators for the different game states
-	public enum HealthState
+
+	//Scenes
+	[SerializeField] private string victoryScreen;
+	[SerializeField] private string gameOverScreen;
+
+    //Creates enumerators for the different game states
+    public enum HealthState
     {
         alive = 0,
         playerDead = 1,
@@ -274,12 +279,12 @@ public class Battle : MonoBehaviour
 	// Show game over screen and send back to title for now
 	void gameOver()
 	{
-		// TO DO: set up game over screen
-	}
+        SceneManager.LoadScene(gameOverScreen);
+    }
 	
 	// Show victory screen and send back to title for now
 	void victory()
 	{
-		// TO DO: set up victory screen
-	}
+        SceneManager.LoadScene(victoryScreen);
+    }
 }

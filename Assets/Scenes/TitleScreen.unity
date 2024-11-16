@@ -342,7 +342,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1638710087}
-        m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
+        m_TargetAssemblyTypeName: ScreenFuntions, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -475,7 +475,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1638710087}
-        m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
+        m_TargetAssemblyTypeName: ScreenFuntions, Assembly-CSharp
         m_MethodName: Options
         m_Mode: 1
         m_Arguments:
@@ -744,7 +744,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1638710087}
-        m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
+        m_TargetAssemblyTypeName: ScreenFuntions, Assembly-CSharp
         m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
@@ -1272,11 +1272,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638710082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f8966e788ecd942877f068712bd626, type: 3}
+  m_Script: {fileID: 11500000, guid: ad132f3bc832b2d44b6cba6811b5f27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newGameScene: Main
   optionsScene: OptionsScreen
+  titleScreenScene: 
 --- !u!1 &2106801135
 GameObject:
   m_ObjectHideFlags: 0
