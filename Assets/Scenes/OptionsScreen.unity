@@ -206,8 +206,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1193380261}
-        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
-        m_MethodName: BackToTitleScreen
+        m_TargetAssemblyTypeName: ScreenFuntions, Assembly-CSharp
+        m_MethodName: TitleScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1506,9 +1506,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1193380256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b710b4f34e973d41851da33fa8ed152, type: 3}
+  m_Script: {fileID: 11500000, guid: ad132f3bc832b2d44b6cba6811b5f27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameScene: 
+  optionsScene: 
   titleScreenScene: TitleScreen
 --- !u!1 &1230646939
 GameObject:
