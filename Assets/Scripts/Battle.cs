@@ -17,10 +17,18 @@ public class Battle : MonoBehaviour
 	[SerializeField] private float bearHP;
 	
 	// Initialize actors
-	Player player = new Player();
-	Dog dog = new Dog();
-	Bear bear = new Bear();
-
+	public GameObject player;
+	public GameObject dog;
+	public GameObject bear;
+	
+	// Actor scripts
+	public Player playerScript;
+	public Dog dogScript;
+	public Bear bearScript;
+	public CharacterMovement playerMovementScript;
+	public CharacterMovement dogMovementScript;
+	public CharacterMovement bearMovementScript;
+	
 	//Scenes
 	[SerializeField] private string victoryScreen;
 	[SerializeField] private string gameOverScreen;
@@ -50,20 +58,26 @@ public class Battle : MonoBehaviour
         /* Instanciate actors, play battle music (when music system is set up),
 		play opening animations, dialogue, etc...
 		Run when battle scene loads */
+		playerScript = player.GetComponent<Player>();
+		dogScript = dog.GetComponent<Dog>();
+		bearScript = bear.GetComponent<Bear>();
+		playerMovementScript = player.GetComponent<CharacterMovement>();
+		dogMovementScript = dog.GetComponent<CharacterMovement>();
+		bearMovementScript = bear.GetComponent<CharacterMovement>();
 		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
 		currentTurn = Turn.player;
 		
 		// Initialize stamina gauges
-		playerAPGauge = player.AP.BaseValue;
-		dogAPGauge = dog.AP.BaseValue;
-		bearAPGauge = bear.AP.BaseValue;
+		playerAPGauge = playerScript.AP.BaseValue;
+		dogAPGauge = dogScript.AP.BaseValue;
+		bearAPGauge = bearScript.AP.BaseValue;
 		
 		// Initialize actor HP, drawn from each charachter class
-		playerHP = player.HP.BaseValue;
-		dogHP = dog.HP.BaseValue;
-		bearHP = bear.HP.BaseValue;
+		playerHP = playerScript.HP.BaseValue;
+		dogHP = dogScript.HP.BaseValue;
+		bearHP = bearScript.HP.BaseValue;
     }
 
     // Update is called once per frame
@@ -100,19 +114,19 @@ public class Battle : MonoBehaviour
 		// Set turns
 		if (playerAPGauge <= 0f)
 		{
-			playerAPGauge = player.AP.BaseValue;
+			playerAPGauge = playerScript.AP.BaseValue;
 			currentTurn = Turn.dog;
 		}
 		
 		if (dogAPGauge <= 0f)
 		{
-			dogAPGauge = dog.AP.BaseValue;
+			dogAPGauge = dogScript.AP.BaseValue;
 			currentTurn = Turn.bear;
 		}
 		
 		if (bearAPGauge <= 0f)
 		{
-			bearAPGauge = bear.AP.BaseValue;
+			bearAPGauge = bearScript.AP.BaseValue;
 			currentTurn = Turn.player;
 		}
 		
@@ -133,7 +147,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 3f)
 			{
 				playerAPGauge -= 3f;
-				player.Fire();
+				playerScript.Fire();
 			}
 			else
 			{
@@ -147,7 +161,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 2f)
 			{
 				playerAPGauge -= 2f;
-				player.Reload();
+				playerScript.Reload();
 			}
 			else
 			{
@@ -160,7 +174,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
-				player.MoveLeft();
+				playerMovementScript.MoveLeft();
 			}
 			else
 			{
@@ -173,7 +187,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
-				player.MoveRight();
+				playerMovementScript.MoveRight();
 			}
 			else
 			{
@@ -193,7 +207,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 3f)
 			{
 				dogAPGauge -= 3f;
-				dog.Guard();
+				dogScript.Guard();
 			}
 			else
 			{
@@ -206,7 +220,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 5f)
 			{
 				dogAPGauge -= 5f;
-				dog.Bite();
+				dogScript.Bite();
 			}
 			else
 			{
@@ -219,7 +233,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
-				dog.MoveLeft();
+				dogMovementScript.MoveLeft();
 			}
 			else
 			{
@@ -232,7 +246,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
-				dog.MoveRight();
+				dogMovementScript.MoveRight();
 			}
 			else
 			{
@@ -245,7 +259,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
-				dog.MoveUp();
+				dogMovementScript.MoveUp();
 			}
 			else
 			{
@@ -258,7 +272,7 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
-				dog.MoveDown();
+				dogMovementScript.MoveDown();
 			}
 			else
 			{

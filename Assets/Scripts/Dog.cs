@@ -2,24 +2,14 @@ using UnityEngine;
 using TrueNorth.CharacterStats;
 
 // Main dog class
-public class Dog
+public class Dog : MonoBehaviour
 {
 	// Dog stats (for now just for the sake of testing)
-	public CharacterStat HP;
-	public CharacterStat AP;
-	public CharacterStat attack;
-	public CharacterStat defense;
-	public CharacterStat speed;
-	
-	// Contructor
-	public Dog()
-	{
-		HP = new CharacterStat(75f);
-		AP = new CharacterStat(14f);
-		attack = new CharacterStat(20f);
-		defense = new CharacterStat(20f);
-		speed = new CharacterStat(40f);
-	}
+	public CharacterStat HP = new CharacterStat(75f);
+	public CharacterStat AP = new CharacterStat(14f);
+	public CharacterStat attack = new CharacterStat(20f);
+	public CharacterStat defense = new CharacterStat(20f);
+	public CharacterStat speed = new CharacterStat(40f);
 	
     // Dog bark/guard (unable to pass)
 	public void Guard()
@@ -33,29 +23,5 @@ public class Dog
 	{
 		// DEBUG CALL
 		Debug.Log("DOG BITE");
-	}
-	
-	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	public void MoveLeft()
-	{
-		
-	}
-	
-	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	public void MoveRight()
-	{
-		
-	}
-	
-	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	public void MoveUp()
-	{
-		
-	}
-	
-	// Dog move, one relocation takes a turn. place code from dogmovement.cs
-	public void MoveDown()
-	{
-		
 	}
 }
