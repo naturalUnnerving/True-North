@@ -11,11 +11,35 @@ public class Dog : MonoBehaviour
 	public CharacterStat defense = new CharacterStat(20f);
 	public CharacterStat speed = new CharacterStat(40f);
 	
-    // Dog bark/guard (unable to pass)
-	public void Guard()
+	// raycast for bite
+	Ray ray;
+	RaycastHit hitData;
+	public float dist;
+	
+	// Battle scene link
+	public GameObject battle;
+	public Battle battleScript;
+	
+	void Start()
+	{
+		battleScript = battle.GetComponent<Battle>();
+	}
+	
+	void Update()
+	{
+		ray = new Ray(transform.position, transform.forward);
+		if (Physics.Raycast(ray, out hitData)) dist = hitData.distance;
+	}
+	
+    // Dog bark/guard (reduce bear damage for next turn)
+	public void Bark()
 	{
 		// DEBUG CALL
-		Debug.Log("DOG GUARD");
+		Debug.Log("DOG BARK");
+		
+		// Play bark animation and sound
+		
+		if (!battleScript.bark) battleScript.bearAT *= 0.5f;
 	}
 	
 	// Dog bite
@@ -23,5 +47,9 @@ public class Dog : MonoBehaviour
 	{
 		// DEBUG CALL
 		Debug.Log("DOG BITE");
+		
+		// Play bite animation and sound
+		
+		battleScript.bearHP -= battleScript.dogAT;
 	}
 }

@@ -9,6 +9,7 @@ public class Battle : MonoBehaviour
 	// Battle system flags
 	public bool reload;
 	public bool dogClose;
+	public bool bark;
 	
 	// Player, dog and bear battle stamina
 	public float playerAPGauge;
@@ -19,6 +20,11 @@ public class Battle : MonoBehaviour
 	public float playerHP;
 	public float dogHP;
 	public float bearHP;
+	
+	// Player, dog and bear initial attack
+	public float playerAT;
+	public float dogAT;
+	public float bearAT;
 	
 	// Initialize actors
 	public GameObject player;
@@ -72,20 +78,26 @@ public class Battle : MonoBehaviour
 		// Initialize battle flags
 		reload = false;
 		dogClose = false;
+		bark = false;
 		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
 		currentTurn = Turn.player;
 		
 		// Initialize stamina gauges
-		playerAPGauge = playerScript.AP.BaseValue;
-		dogAPGauge = dogScript.AP.BaseValue;
-		bearAPGauge = bearScript.AP.BaseValue;
+		playerAPGauge = playerScript.AP.Value;
+		dogAPGauge = dogScript.AP.Value;
+		bearAPGauge = bearScript.AP.Value;
 		
 		// Initialize actor HP, drawn from each charachter class
-		playerHP = playerScript.HP.BaseValue;
-		dogHP = dogScript.HP.BaseValue;
-		bearHP = bearScript.HP.BaseValue;
+		playerHP = playerScript.HP.Value;
+		dogHP = dogScript.HP.Value;
+		bearHP = bearScript.HP.Value;
+		
+		// Player, dog and bear initial health
+		playerAT = playerScript.attack.Value;
+		dogAT = dogScript.attack.Value;
+		bearAT = bearScript.attack.Value;
     }
 
     // Update is called once per frame
@@ -119,22 +131,24 @@ public class Battle : MonoBehaviour
 		if (playerMovementScript.character.velocity == Vector3.zero) playerMovementScript.faceBear();
 		if (dogMovementScript.character.velocity == Vector3.zero) dogMovementScript.faceBear();
 		
-		// Set turns
+		// Set turns and reset status
 		if (playerAPGauge <= 0f)
 		{
-			playerAPGauge = playerScript.AP.BaseValue;
+			playerAPGauge = playerScript.AP.Value;
 			currentTurn = Turn.dog;
 		}
 		
 		if (dogAPGauge <= 0f)
 		{
-			dogAPGauge = dogScript.AP.BaseValue;
+			dogAPGauge = dogScript.AP.Value;
 			currentTurn = Turn.bear;
 		}
 		
 		if (bearAPGauge <= 0f)
 		{
-			bearAPGauge = bearScript.AP.BaseValue;
+			bearAPGauge = bearScript.AP.Value;
+			bearAT = bearScript.attack.Value;
+			bark = false;
 			currentTurn = Turn.player;
 		}
 		
@@ -224,7 +238,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 3f)
 			{
 				dogAPGauge -= 3f;
-				dogScript.Guard();
+				dogScript.Bark();
+				bark = true;
 			}
 			else
 			{
@@ -234,7 +249,7 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("g"))
 		{
-			if (dogAPGauge >= 5f && dogClose)
+			if (dogAPGauge >= 5f && dogClose && dogScript.dist <= 2f)
 			{
 				dogAPGauge -= 5f;
 				dogScript.Bite();
@@ -255,6 +270,7 @@ public class Battle : MonoBehaviour
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveLeft();
+				dogClose = false;
 			}
 			else
 			{
@@ -268,6 +284,7 @@ public class Battle : MonoBehaviour
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveRight();
+				dogClose = false;
 			}
 			else
 			{
@@ -319,6 +336,10 @@ public class Battle : MonoBehaviour
 	void bearAction()
 	{
 		// TO DO: implement bear AI
+		
+		// DEBUG ONLY
+		// End turn
+		if (Input.GetKeyDown("q")) bearAPGauge = 0f;
 	}
 	
 	// Show game over screen and send back to title for now

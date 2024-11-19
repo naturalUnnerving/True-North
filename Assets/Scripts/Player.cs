@@ -45,15 +45,15 @@ public class Player : MonoBehaviour
 			// Play bear hit animation and sound
 			if ((angle >= -45f && angle <= 0f) || (angle <= 45f && angle > 0f))
 			{
-				battleScript.bearHP -= 0.5f * attack.BaseValue; // front shot
+				battleScript.bearHP -= 0.5f * battleScript.playerAT; // front shot
 			}
 			else if ((angle >= -135f && angle <= -45f) || (angle >= 45f && angle <= 135f))
 			{
-				battleScript.bearHP -= 1.5f * attack.BaseValue; // side shot
+				battleScript.bearHP -= 1.5f * battleScript.playerAT; // side shot
 			}
 			else if (angle <= -135f || angle >= 135f)
 			{
-				battleScript.bearHP -= 1.0f * attack.BaseValue; // back shot
+				battleScript.bearHP -= 1.0f * battleScript.playerAT; // back shot
 			}
 		}
 	}
