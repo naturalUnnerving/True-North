@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
 	// Initialize player positions list
 	[SerializeField] private List<Vector3> characterPositions = new List<Vector3>();
 	// Link dog navmesh angent
-	[SerializeField] private NavMeshAgent character;
+	public NavMeshAgent character;
 	// Index for dog positions list
 	[SerializeField] private int positionIndex;
 	// Reference to player and bear gameobject
@@ -36,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         // Face bear while stationary
-		if (character.velocity == Vector3.zero) faceBear();
+		//if (character.velocity == Vector3.zero) faceBear();
     }
 	
 	// Dog only

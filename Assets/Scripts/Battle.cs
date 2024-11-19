@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 // Main battle scene
 public class Battle : MonoBehaviour
 {
+	// Battle system flags
+	public bool reload;
+	public bool dogClose;
+	
 	// Player, dog and bear battle stamina
-	[SerializeField] private float playerAPGauge;
-	[SerializeField] private float dogAPGauge;
-	[SerializeField] private float bearAPGauge;
+	public float playerAPGauge;
+	public float dogAPGauge;
+	public float bearAPGauge;
 	
 	// Player, dog and bear initial health
-	[SerializeField] private float playerHP;
-	[SerializeField] private float dogHP;
-	[SerializeField] private float bearHP;
+	public float playerHP;
+	public float dogHP;
+	public float bearHP;
 	
 	// Initialize actors
 	public GameObject player;
@@ -65,6 +69,10 @@ public class Battle : MonoBehaviour
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
 		bearMovementScript = bear.GetComponent<CharacterMovement>();
 		
+		// Initialize battle flags
+		reload = false;
+		dogClose = false;
+		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
 		currentTurn = Turn.player;
@@ -84,15 +92,11 @@ public class Battle : MonoBehaviour
     void Update()
     {
 		//Checks Players current Health State
-        if (playerHP != 0 && dogHP != 0)
-        {
-            currentHealthState = HealthState.alive;
-        }
-        if (playerHP == 0 || dogHP == 0)
+        if (playerHP <= 0f)
         {
             currentHealthState = HealthState.playerDead;
         } 
-        else if (bearHP == 0)
+        else if (bearHP <= 0f)
         {
             currentHealthState = HealthState.bearDead;
         }
@@ -110,6 +114,10 @@ public class Battle : MonoBehaviour
                 victory();
                 break;
         }
+		
+		// Dog and player face bear while not moving
+		if (playerMovementScript.character.velocity == Vector3.zero) playerMovementScript.faceBear();
+		if (dogMovementScript.character.velocity == Vector3.zero) dogMovementScript.faceBear();
 		
 		// Set turns
 		if (playerAPGauge <= 0f)
@@ -144,10 +152,15 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("r"))
 		{
-			if (playerAPGauge >= 3f)
+			if (playerAPGauge >= 3f && !reload)
 			{
 				playerAPGauge -= 3f;
 				playerScript.Fire();
+				reload = true;
+			}
+			else if (reload)
+			{
+				Debug.Log("Must reload!");
 			}
 			else
 			{
@@ -155,13 +168,17 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		// Maybe allow reload while idle?
 		if (Input.GetKeyDown("f"))
 		{
-			if (playerAPGauge >= 2f)
+			if (playerAPGauge >= 2f && reload)
 			{
 				playerAPGauge -= 2f;
 				playerScript.Reload();
+				reload = false;
+			}
+			else if (!reload)
+			{
+				Debug.Log("Already loaded!");
 			}
 			else
 			{
@@ -217,10 +234,14 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("g"))
 		{
-			if (dogAPGauge >= 5f)
+			if (dogAPGauge >= 5f && dogClose)
 			{
 				dogAPGauge -= 5f;
 				dogScript.Bite();
+			}
+			else if (!dogClose)
+			{
+				Debug.Log("Dog not close enough");
 			}
 			else
 			{
@@ -256,10 +277,15 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("up"))
 		{
-			if (dogAPGauge >= 1f)
+			if (dogAPGauge >= 1f && !dogClose)
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveUp();
+				dogClose = true;
+			}
+			else if (dogClose)
+			{
+				Debug.Log("Dog already at bear!");
 			}
 			else
 			{
@@ -269,10 +295,15 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("down"))
 		{
-			if (dogAPGauge >= 1f)
+			if (dogAPGauge >= 1f && dogClose)
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveDown();
+				dogClose = false;
+			}
+			else if (!dogClose)
+			{
+				Debug.Log("Dog already away from bear!");
 			}
 			else
 			{
