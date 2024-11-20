@@ -1802,6 +1802,9 @@ MonoBehaviour:
     BaseValue: 20
   speed:
     BaseValue: 40
+  dist: 0
+  battle: {fileID: 1989869671}
+  battleScript: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
