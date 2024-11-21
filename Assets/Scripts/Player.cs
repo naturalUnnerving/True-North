@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 	void Update()
 	{
 		ray = new Ray(transform.position, transform.forward);
-		if (Physics.Raycast(ray, out hitData)) angle = Vector3.Angle(hitData.transform.forward, ray.direction);
+		if (Physics.Raycast(ray, out hitData)) angle = 180f - Vector3.Angle(hitData.transform.forward, ray.direction);
 	}
 	
 	// Player fire

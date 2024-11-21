@@ -10,6 +10,7 @@ public class Battle : MonoBehaviour
 	public bool reload;
 	public bool dogClose;
 	public bool bark;
+	public bool growl;
 	
 	// Player, dog and bear battle stamina
 	public float playerAPGauge;
@@ -79,6 +80,7 @@ public class Battle : MonoBehaviour
 		reload = false;
 		dogClose = false;
 		bark = false;
+		growl = false;
 		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
@@ -136,6 +138,7 @@ public class Battle : MonoBehaviour
 		{
 			playerAPGauge = playerScript.AP.Value;
 			currentTurn = Turn.dog;
+			growl = false;
 		}
 		
 		if (dogAPGauge <= 0f)
@@ -200,7 +203,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		if (Input.GetKeyDown("a"))
+		if (Input.GetKeyDown("a") && !growl)
 		{
 			if (playerAPGauge >= 1f)
 			{
@@ -213,7 +216,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		if (Input.GetKeyDown("d"))
+		if (Input.GetKeyDown("d") && !growl)
 		{
 			if (playerAPGauge >= 1f)
 			{
@@ -233,7 +236,7 @@ public class Battle : MonoBehaviour
 	// Communicates with UI to execute a dog action, for now use t, g to call guard and bite
 	void dogAction()
 	{
-		if (Input.GetKeyDown("t"))
+		if (Input.GetKeyDown("r"))
 		{
 			if (dogAPGauge >= 3f)
 			{
@@ -247,7 +250,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		if (Input.GetKeyDown("g"))
+		if (Input.GetKeyDown("f"))
 		{
 			if (dogAPGauge >= 5f && dogClose && dogScript.dist <= 2f)
 			{
@@ -340,6 +343,45 @@ public class Battle : MonoBehaviour
 		// DEBUG ONLY
 		// End turn
 		if (Input.GetKeyDown("q")) bearAPGauge = 0f;
+		
+		if (Input.GetKeyDown("r"))
+		{
+			bearAPGauge -= 5f;
+			bearScript.Growl();
+			growl = true;
+		}
+		
+		if (Input.GetKeyDown("f"))
+		{
+			bearAPGauge -= 5f;
+			bearScript.Swipe();
+		}
+		
+		if (Input.GetKeyDown("z"))
+		{
+			if (bearAPGauge >= 1f)
+			{
+				bearAPGauge -= 1f;
+				bearMovementScript.TurnLeft();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("c"))
+		{
+			if (bearAPGauge >= 1f)
+			{
+				bearAPGauge -= 1f;
+				bearMovementScript.TurnRight();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
 	}
 	
 	// Show game over screen and send back to title for now
