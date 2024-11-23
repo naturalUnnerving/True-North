@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ScreenFuntions : MonoBehaviour
 {
-    [SerializeField] private string newGameScene;
-    [SerializeField] private string optionsScene;
-    [SerializeField] private string titleScreenScene;
+    [SerializeField] private string newGameScene = "Main";
+    [SerializeField] private string optionsScene = "OptionsScreen";
+    [SerializeField] private string titleScreenScene = "TitleScreen";
 
     public void NewGame()
     {
@@ -28,14 +28,10 @@ public class ScreenFuntions : MonoBehaviour
         Application.Quit();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void PauseToggle(PauseController pauseController)
     {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        pauseController.pauseMenu.SetActive(!pauseController.isPaused);
+        Time.timeScale = pauseController.isPaused ? 0 : 1;
+        pauseController.isPaused = !pauseController.isPaused;
     }
 }
