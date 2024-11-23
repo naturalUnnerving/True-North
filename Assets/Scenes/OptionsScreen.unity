@@ -206,8 +206,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1193380261}
-        m_TargetAssemblyTypeName: ScreenFuntions, Assembly-CSharp
-        m_MethodName: TitleScreen
+        m_TargetAssemblyTypeName: ScreenFunctions, Assembly-CSharp
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

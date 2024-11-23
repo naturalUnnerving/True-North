@@ -3,7 +3,7 @@ using UnityEngine;
 public class PauseController : MonoBehaviour
 {    
     public GameObject pauseMenu;
-    [SerializeField] private ScreenFuntions screenFuntions;    
+    [SerializeField] private ScreenFunctions screenFuntions;    
     public bool isPaused = false; 
 
     public void Update()
