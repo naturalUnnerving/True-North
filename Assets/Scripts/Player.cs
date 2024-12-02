@@ -11,6 +11,12 @@ public class Player : MonoBehaviour
 	public CharacterStat defense = new CharacterStat(20f);
 	public CharacterStat speed = new CharacterStat(30f);
 	
+	// Animation
+	private Animator anim;
+	
+	// Sound Effects
+	public AudioSource audioSource;
+	
 	// raycast for rifle
 	Ray ray;
 	RaycastHit hitData;
@@ -23,6 +29,7 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		battleScript = battle.GetComponent<Battle>();
+		anim = GetComponent<Animator>();
 	}
 	
 	void Update()
@@ -39,6 +46,13 @@ public class Player : MonoBehaviour
 		Debug.Log("PLAYER FIRE");
 		
 		// Play shooting animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.Murata22Armtr|Firing", 0, 0f);
+			anim.Play("Base Layer.RIG-matagiHunter_arm|Firing", 0, 0f);
+        }
+		
+		audioSource.PlayOneShot(audioSource.clip, 1.0f);
 		
 		if (Physics.Raycast(ray, out hitData))
 		{
@@ -65,5 +79,10 @@ public class Player : MonoBehaviour
 		Debug.Log("PLAYER RELOAD");
 		
 		// Play player reload animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.Murata22Armtr|Reloading", 0, 0f);
+			anim.Play("Base Layer.RIG-matagiHunter_arm|Reloading", 0, 0f);
+        }
 	}
 }

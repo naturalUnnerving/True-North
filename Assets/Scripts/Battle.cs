@@ -43,6 +43,9 @@ public class Battle : MonoBehaviour
 	//Scenes
 	[SerializeField] private string victoryScreen;
 	[SerializeField] private string gameOverScreen;
+	
+	// Music system
+	public AudioSource audioSource;
 
     //Creates enumerators for the different game states
     public enum HealthState
@@ -100,6 +103,9 @@ public class Battle : MonoBehaviour
 		playerAT = playerScript.attack.Value;
 		dogAT = dogScript.attack.Value;
 		bearAT = bearScript.attack.Value;
+		
+		// Play battle music
+		audioSource.Play();
     }
 
     // Update is called once per frame
@@ -338,8 +344,6 @@ public class Battle : MonoBehaviour
 	// bear actions are called by bear AI. For now just autorun Swipe
 	void bearAction()
 	{
-		// TO DO: implement bear AI
-		
 		// DEBUG ONLY
 		// End turn
 		if (Input.GetKeyDown("q")) bearAPGauge = 0f;
