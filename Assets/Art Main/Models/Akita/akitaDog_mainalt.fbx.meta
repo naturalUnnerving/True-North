@@ -3,12 +3,7 @@ guid: 5900f6710a3fcd14aaa62d99a57e4dc4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: akitaDot_mat
-    second: {fileID: 2100000, guid: efa60920faf5f4241bd7675ffd8410d7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
