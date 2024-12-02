@@ -20,9 +20,13 @@ public class Dog : MonoBehaviour
 	public GameObject battle;
 	public Battle battleScript;
 	
+	// Animation
+	private Animator anim;
+	
 	void Start()
 	{
 		battleScript = battle.GetComponent<Battle>();
+		anim = GetComponentInChildren<Animator>();
 	}
 	
 	void Update()
@@ -38,6 +42,10 @@ public class Dog : MonoBehaviour
 		Debug.Log("DOG BARK");
 		
 		// Play bark animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.RIG-Armature|Bark", 0, 0f);
+        }
 		
 		if (!battleScript.bark) battleScript.bearAT *= 0.5f;
 	}
@@ -49,6 +57,10 @@ public class Dog : MonoBehaviour
 		Debug.Log("DOG BITE");
 		
 		// Play bite animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.RIG-Armature|Bite", 0, 0f);
+        }
 		
 		battleScript.bearHP -= battleScript.dogAT;
 	}

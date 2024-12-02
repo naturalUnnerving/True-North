@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		battleScript = battle.GetComponent<Battle>();
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 	}
 	
 	void Update()
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 		// Play shooting animation and sound
 		if (anim != null)
         {
-            anim.Play("Base Layer.Murata22Armtr|Firing", 0, 0f);
+            //anim.Play("Base Layer.Murata22Armtr|Firing", 0, 0f);
 			anim.Play("Base Layer.RIG-matagiHunter_arm|Firing", 0, 0f);
         }
 		
@@ -81,8 +81,8 @@ public class Player : MonoBehaviour
 		// Play player reload animation and sound
 		if (anim != null)
         {
-            anim.Play("Base Layer.Murata22Armtr|Reloading", 0, 0f);
-			anim.Play("Base Layer.RIG-matagiHunter_arm|Reloading", 0, 0f);
+            //anim.Play("Base Layer.Murata22Armtr|Reloading", 0, 0f);
+			anim.Play("Base Layer.RIG-matagiHunter_arm|Reloading");
         }
 	}
 }

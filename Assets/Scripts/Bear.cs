@@ -20,9 +20,13 @@ public class Bear : MonoBehaviour
 	public GameObject battle;
 	public Battle battleScript;
 	
+	// Animation
+	private Animator anim;
+	
 	void Start()
 	{
 		battleScript = battle.GetComponent<Battle>();
+		anim = GetComponentInChildren<Animator>();
 	}
 	
 	void Update()
@@ -37,6 +41,10 @@ public class Bear : MonoBehaviour
 		Debug.Log("BEAR GROWL");
 		
 		// Play growl animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Roar", 0, 0f);
+        }
 	}
 	
 	// Bear swipe
@@ -46,6 +54,10 @@ public class Bear : MonoBehaviour
 		Debug.Log("BEAR SWIPE");
 		
 		// Play swipe animation and sound
+		if (anim != null)
+        {
+            anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
+        }
 		
 		if (Physics.Raycast(ray, out hitData))
 		{
