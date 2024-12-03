@@ -5,8 +5,8 @@ using TrueNorth.CharacterStats;
 public class Bear : MonoBehaviour
 {
 	// Player stats (for now just for the sake of testing)
-	public CharacterStat HP = new CharacterStat(500f);
-	public CharacterStat AP = new CharacterStat(10f);
+	public CharacterStat HP = new CharacterStat(250f);
+	public CharacterStat AP = new CharacterStat(15f);
 	public CharacterStat attack = new CharacterStat(70f);
 	public CharacterStat defense = new CharacterStat(100f);
 	public CharacterStat speed = new CharacterStat(15f);
