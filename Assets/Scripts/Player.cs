@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	private Animator anim;
 	
 	// Sound Effects
-	public AudioSource audioSource;
+	//public AudioSource audioSource;
 	
 	// raycast for rifle
 	Ray ray;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 				anim.Play("Base Layer.RIG-matagiHunter_arm|Firing", 0, 0f);
 			}
 		
-			audioSource.PlayOneShot(audioSource.clip, 1.0f);
+			//audioSource.PlayOneShot(audioSource.clip, 1.0f);
 		
 			if (Physics.Raycast(ray, out hitData))
 			{

@@ -423,7 +423,7 @@ MonoBehaviour:
     BaseValue: 20
   speed:
     BaseValue: 30
-  audioSource: {fileID: 922806702}
+  audioSource: {fileID: 0}
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
 --- !u!1 &330496219
