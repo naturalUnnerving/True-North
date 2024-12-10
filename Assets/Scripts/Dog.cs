@@ -38,30 +38,51 @@ public class Dog : MonoBehaviour
     // Dog bark/guard (reduce bear damage for next turn)
 	public void Bark()
 	{
-		// DEBUG CALL
-		Debug.Log("DOG BARK");
+		if (battleScript.dogAPGauge >= 3f)
+		{
+			battleScript.dogAPGauge -= 3f;
+			// DEBUG CALL
+			Debug.Log("DOG BARK");
 		
-		// Play bark animation and sound
-		if (anim != null)
-        {
-            anim.Play("Base Layer.RIG-Armature|Bark", 0, 0f);
-        }
+			// Play bark animation and sound
+			if (anim != null)
+			{
+				anim.Play("Base Layer.RIG-Armature|Bark", 0, 0f);
+			}
 		
-		if (!battleScript.bark) battleScript.bearAT *= 0.5f;
+			if (!battleScript.bark) battleScript.bearAT *= 0.5f;
+			battleScript.bark = true;
+		}
+		else
+		{
+			Debug.Log("Not enough AP!");
+		}
 	}
 	
 	// Dog bite
 	public void Bite()
 	{
-		// DEBUG CALL
-		Debug.Log("DOG BITE");
+		if (battleScript.dogAPGauge >= 5f && battleScript.dogClose && dist <= 2f)
+			{
+				battleScript.dogAPGauge -= 5f;
+				// DEBUG CALL
+				Debug.Log("DOG BITE");
 		
-		// Play bite animation and sound
-		if (anim != null)
-        {
-            anim.Play("Base Layer.RIG-Armature|Bite", 0, 0f);
-        }
+				// Play bite animation and sound
+				if (anim != null)
+				{
+					anim.Play("Base Layer.RIG-Armature|Bite", 0, 0f);
+				}
 		
-		battleScript.bearHP -= battleScript.dogAT;
+				battleScript.bearHP -= battleScript.dogAT;
+			}
+			else if (!battleScript.dogClose)
+			{
+				Debug.Log("Dog not close enough");
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
 	}
 }

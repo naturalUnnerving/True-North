@@ -42,47 +42,73 @@ public class Player : MonoBehaviour
 	// Damage: front not very effective (x0.5), side effective (x1.0), back super effective (x1.5)
 	public void Fire()
 	{
-		// DEBUG CALL
-		Debug.Log("PLAYER FIRE");
-		
-		// Play shooting animation and sound
-		if (anim != null)
-        {
-            //anim.Play("Base Layer.Murata22Armtr|Firing", 0, 0f);
-			anim.Play("Base Layer.RIG-matagiHunter_arm|Firing", 0, 0f);
-        }
-		
-		audioSource.PlayOneShot(audioSource.clip, 1.0f);
-		
-		if (Physics.Raycast(ray, out hitData))
+		if (battleScript.playerAPGauge >= 3f && !battleScript.reload)
 		{
-			// Play bear hit animation and sound
-			if ((angle >= -45f && angle <= 0f) || (angle <= 45f && angle > 0f))
+			battleScript.playerAPGauge -= 3f;
+			// DEBUG CALL
+			Debug.Log("PLAYER FIRE");
+		
+			// Play shooting animation and sound
+			if (anim != null)
 			{
-				battleScript.bearHP -= 0.5f * battleScript.playerAT; // front shot
+				//anim.Play("Base Layer.Murata22Armtr|Firing", 0, 0f);
+				anim.Play("Base Layer.RIG-matagiHunter_arm|Firing", 0, 0f);
 			}
-			else if ((angle >= -135f && angle <= -45f) || (angle >= 45f && angle <= 135f))
+		
+			audioSource.PlayOneShot(audioSource.clip, 1.0f);
+		
+			if (Physics.Raycast(ray, out hitData))
 			{
-				battleScript.bearHP -= 1.5f * battleScript.playerAT; // side shot
+				// Play bear hit animation and sound
+				if ((angle >= -45f && angle <= 0f) || (angle <= 45f && angle > 0f))
+				{
+					battleScript.bearHP -= 0.5f * battleScript.playerAT; // front shot
+				}
+				else if ((angle >= -135f && angle <= -45f) || (angle >= 45f && angle <= 135f))
+				{
+					battleScript.bearHP -= 1.5f * battleScript.playerAT; // side shot
+				}
+				else if (angle <= -135f || angle >= 135f)
+				{
+					battleScript.bearHP -= 1.0f * battleScript.playerAT; // back shot
+				}
 			}
-			else if (angle <= -135f || angle >= 135f)
-			{
-				battleScript.bearHP -= 1.0f * battleScript.playerAT; // back shot
-			}
+			battleScript.reload = true;
+		}
+		else if (battleScript.reload)
+		{
+			Debug.Log("Must reload!");
+		}
+		else
+		{
+			Debug.Log("Not enough AP!");
 		}
 	}
 	
 	// Player reload (done while idle?)
 	public void Reload()
 	{
-		// DEBUG CALL
-		Debug.Log("PLAYER RELOAD");
+		if (battleScript.playerAPGauge >= 2f && battleScript.reload)
+		{
+			battleScript.playerAPGauge -= 2f;
+			// DEBUG CALL
+			Debug.Log("PLAYER RELOAD");
 		
-		// Play player reload animation and sound
-		if (anim != null)
-        {
-            //anim.Play("Base Layer.Murata22Armtr|Reloading", 0, 0f);
-			anim.Play("Base Layer.RIG-matagiHunter_arm|Reloading");
-        }
+			// Play player reload animation and sound
+			if (anim != null)
+			{
+				//anim.Play("Base Layer.Murata22Armtr|Reloading", 0, 0f);
+				anim.Play("Base Layer.RIG-matagiHunter_arm|Reloading");
+			}
+			battleScript.reload = false;
+		}
+		else if (!battleScript.reload)
+		{
+			Debug.Log("Already loaded!");
+		}
+		else
+		{
+			Debug.Log("Not enough AP!");
+		}
 	}
 }

@@ -175,38 +175,12 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("r"))
 		{
-			if (playerAPGauge >= 3f && !reload)
-			{
-				playerAPGauge -= 3f;
-				playerScript.Fire();
-				reload = true;
-			}
-			else if (reload)
-			{
-				Debug.Log("Must reload!");
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
+			playerScript.Fire();
 		}
 		
 		if (Input.GetKeyDown("f"))
 		{
-			if (playerAPGauge >= 2f && reload)
-			{
-				playerAPGauge -= 2f;
-				playerScript.Reload();
-				reload = false;
-			}
-			else if (!reload)
-			{
-				Debug.Log("Already loaded!");
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
+			playerScript.Reload();
 		}
 		
 		if (Input.GetKeyDown("a") && !growl)
@@ -244,33 +218,12 @@ public class Battle : MonoBehaviour
 	{
 		if (Input.GetKeyDown("r"))
 		{
-			if (dogAPGauge >= 3f)
-			{
-				dogAPGauge -= 3f;
-				dogScript.Bark();
-				bark = true;
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
+			dogScript.Bark();
 		}
 		
 		if (Input.GetKeyDown("f"))
 		{
-			if (dogAPGauge >= 5f && dogClose && dogScript.dist <= 2f)
-			{
-				dogAPGauge -= 5f;
-				dogScript.Bite();
-			}
-			else if (!dogClose)
-			{
-				Debug.Log("Dog not close enough");
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
+			dogScript.Bite();
 		}
 		
 		if (Input.GetKeyDown("left"))
@@ -350,14 +303,11 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("r"))
 		{
-			bearAPGauge -= 5f;
 			bearScript.Growl();
-			growl = true;
 		}
 		
 		if (Input.GetKeyDown("f"))
 		{
-			bearAPGauge -= 5f;
 			bearScript.Swipe();
 		}
 		

@@ -37,42 +37,62 @@ public class Bear : MonoBehaviour
     // Bear Growl (intimidate, suggestion: lock movement)
 	public void Growl()
 	{
-		// DEBUG CALL
-		Debug.Log("BEAR GROWL");
+		if (battleScript.bearAPGauge >= 5f)
+		{
+			// DEBUG CALL
+			Debug.Log("BEAR GROWL");
 		
-		// Play growl animation and sound
-		if (anim != null)
-        {
-            anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Roar", 0, 0f);
-        }
+			// Play growl animation and sound
+			if (anim != null)
+			{
+				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Roar", 0, 0f);
+			}
+			
+			battleScript.bearAPGauge -= 5f;
+			battleScript.growl = true;
+		}
+		else
+		{
+			Debug.Log("Not enough AP!");
+		}
 	}
 	
 	// Bear swipe
 	public void Swipe()
 	{
-		// DEBUG CALL
-		Debug.Log("BEAR SWIPE");
 		
-		// Play swipe animation and sound
-		if (anim != null)
-        {
-            anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
-        }
-		
-		if (Physics.Raycast(ray, out hitData))
+		if (battleScript.bearAPGauge >= 5f)
 		{
-			if (hitData.collider.gameObject.name == "Player")
+			// DEBUG CALL
+			Debug.Log("BEAR SWIPE");
+		
+			// Play swipe animation and sound
+			if (anim != null)
 			{
-				battleScript.playerHP -= battleScript.bearAT;
+				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
 			}
-			else if (hitData.collider.gameObject.name == "Dog")
+		
+			if (Physics.Raycast(ray, out hitData))
 			{
-				battleScript.dogHP -= battleScript.bearAT;
+				if (hitData.collider.gameObject.name == "Player")
+				{
+					battleScript.playerHP -= battleScript.bearAT;
+				}
+				else if (hitData.collider.gameObject.name == "Dog")
+				{
+					battleScript.dogHP -= battleScript.bearAT;
+				}
 			}
+			else
+			{
+				Debug.Log("SWIPE MISS");
+			}
+			
+			battleScript.bearAPGauge -= 5f;
 		}
 		else
 		{
-			Debug.Log("SWIPE MISS");
+			Debug.Log("Not enough AP!");
 		}
 	}
 }
