@@ -13,6 +13,11 @@ public class CharacterMovement : MonoBehaviour
 	[SerializeField] private int positionIndex;
 	// Reference to player and bear gameobject
 	public GameObject bear;
+
+	[SerializeField] float rotateTime = .75f;
+	float targetAngel;
+	float currentVelocity;
+	float CurrentAngle;
 	
     // Start is called before the first frame update
     void Start()
@@ -30,13 +35,19 @@ public class CharacterMovement : MonoBehaviour
 		
 		// Initialize dog starting position to be next to player
 		positionIndex = 0;
+
+		CurrentAngle = character.transform.eulerAngles.y;
+		faceBear();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Face bear while stationary
+		// Face bear while stationary
 		//if (character.velocity == Vector3.zero) faceBear();
+
+		CurrentAngle = Mathf.SmoothDampAngle(CurrentAngle, targetAngel, ref currentVelocity, rotateTime);
+		character.transform.rotation = Quaternion.AngleAxis(CurrentAngle, Vector3.up);
     }
 	
 	// Dog only
@@ -44,14 +55,17 @@ public class CharacterMovement : MonoBehaviour
 	{
 		// Go to the bear
 		character.destination = bear.transform.position;
-	}
+		faceBear();
+    }
 	
 	// Dog only
 	public void MoveDown()
 	{
 		// Return to original outer position
 		character.destination = characterPositions[positionIndex];
-	}
+		faceTarget();
+
+    }
 	
 	// Dog and player only
 	public void MoveLeft()
@@ -60,6 +74,8 @@ public class CharacterMovement : MonoBehaviour
 		positionIndex--;
 		if (positionIndex < 0) positionIndex = 3;
 		character.destination = characterPositions[positionIndex];
+
+		faceTarget();
 	}
 	
 	// Dog and player only
@@ -69,7 +85,9 @@ public class CharacterMovement : MonoBehaviour
 		positionIndex++;
 		if (positionIndex > 3) positionIndex = 0;
 		character.destination = characterPositions[positionIndex];
-	}
+
+		faceTarget();
+    }
 	
 	// Bear only
 	public void TurnLeft()
@@ -94,14 +112,16 @@ public class CharacterMovement : MonoBehaviour
 	{
 		Vector3 moveDirection = bear.transform.position - character.transform.position;
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-		character.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+		targetAngel = angle; 
+		//character.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
 	}
 	
 	// Gradually turn bear towards target
 	public void faceTarget()
 	{
-		Vector3 moveDirection = characterPositions[positionIndex];
+		Vector3 moveDirection = characterPositions[positionIndex] - character.transform.position;
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-		character.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-	}
+        targetAngel = angle;
+        //character.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+    }
 }
