@@ -136,8 +136,8 @@ public class Battle : MonoBehaviour
         }
 		
 		// Dog and player face bear while not moving
-		if (playerMovementScript.character.velocity == Vector3.zero) playerMovementScript.faceBear();
-		if (dogMovementScript.character.velocity == Vector3.zero) dogMovementScript.faceBear();
+		if (playerMovementScript.character.remainingDistance <= .5f) playerMovementScript.faceBear();
+		if (dogMovementScript.character.remainingDistance <= .5f) dogMovementScript.faceBear();
 		
 		// Set turns and reset status
 		if (playerAPGauge <= 0f)
