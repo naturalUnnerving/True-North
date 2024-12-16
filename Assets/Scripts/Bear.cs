@@ -19,6 +19,7 @@ public class Bear : MonoBehaviour
 	// Battle scene link
 	public GameObject battle;
 	public Battle battleScript;
+	public CharacterMovement bearMovementScript;
 	
 	// Animation
 	private Animator anim;
@@ -27,11 +28,12 @@ public class Bear : MonoBehaviour
 	{
 		battleScript = battle.GetComponent<Battle>();
 		anim = GetComponentInChildren<Animator>();
+		bearMovementScript = battleScript.bear.GetComponent<CharacterMovement>();
 	}
 	
 	void Update()
 	{
-		ray = new Ray(transform.position, transform.forward);
+		ray = new Ray(transform.position, new Vector3(0, 0, -transform.forward.z));
 	}
 	
     // Bear Growl (intimidate, suggestion: lock movement)
@@ -93,6 +95,64 @@ public class Bear : MonoBehaviour
 		else
 		{
 			Debug.Log("Not enough AP!");
+		}
+	}
+	
+	public void AI()
+	{
+		if (battleScript.bearHP >= 100f)
+		{
+			// Normal routine
+			if (Physics.Raycast(ray, out hitData) && battleScript.bearAPGauge >= 5f)
+			{
+				if (battleScript.bearAPGauge >= 12f)
+				{
+					Growl();
+					battleScript.endAction();
+				}
+				else
+				{
+					Swipe();
+					battleScript.endAction();
+				}
+			}
+			else if (battleScript.bearAPGauge >= 3f)
+			{
+				battleScript.bearAPGauge -= 3f;
+				switch (battleScript.bearTurnDirection)
+				{
+					case 0: bearMovementScript.TurnLeft(); break;
+					case 1: bearMovementScript.TurnRight(); break;
+				}
+				battleScript.endAction();
+			}
+			else
+			{
+				battleScript.bearAPGauge = 0f;
+			}
+		}
+		else
+		{
+			// desperate routine
+			if (Physics.Raycast(ray, out hitData) && battleScript.bearAPGauge >= 5f)
+			{
+				Swipe();
+				battleScript.endAction();
+			}
+			else if (battleScript.bearAPGauge >= 3f)
+			{
+				battleScript.bearAPGauge -= 3f;
+				switch (battleScript.bearTurnDirection)
+				{
+					case 0: bearMovementScript.TurnLeft(); break;
+					case 1: bearMovementScript.TurnRight(); break;
+				}
+				battleScript.endAction();
+			}
+			else
+			{
+				battleScript.bearAPGauge = 0f;
+			}
 		}
 	}
 }

@@ -254,7 +254,7 @@ MonoBehaviour:
   HP:
     BaseValue: 250
   AP:
-    BaseValue: 10
+    BaseValue: 15
   attack:
     BaseValue: 70
   defense:
@@ -264,6 +264,7 @@ MonoBehaviour:
   dist: 0
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
+  bearMovementScript: {fileID: 0}
 --- !u!135 &192811814
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3295,10 +3296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a557a2909c83b740a3638af81423634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wait: 0
+  timer: 0
   reload: 0
   dogClose: 0
   bark: 0
   growl: 0
+  bearTurnDirection: 0
   playerAPGauge: 0
   dogAPGauge: 0
   bearAPGauge: 0
@@ -3316,7 +3320,6 @@ MonoBehaviour:
   bearScript: {fileID: 0}
   playerMovementScript: {fileID: 0}
   dogMovementScript: {fileID: 0}
-  bearMovementScript: {fileID: 0}
   victoryScreen: VictoryScreen
   gameOverScreen: GameOverScreen
   audioSource: {fileID: 330496220}

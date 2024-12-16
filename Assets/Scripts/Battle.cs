@@ -7,10 +7,15 @@ using UnityEngine.SceneManagement;
 public class Battle : MonoBehaviour
 {
 	// Battle system flags
+	public bool wait;
+	public float timer;
 	public bool reload;
 	public bool dogClose;
 	public bool bark;
 	public bool growl;
+	
+	// Random bear turn direction
+	public int bearTurnDirection;
 	
 	// Player, dog and bear battle stamina
 	public float playerAPGauge;
@@ -38,7 +43,6 @@ public class Battle : MonoBehaviour
 	public Bear bearScript;
 	public CharacterMovement playerMovementScript;
 	public CharacterMovement dogMovementScript;
-	public CharacterMovement bearMovementScript;
 	
 	//Scenes
 	[SerializeField] private string victoryScreen;
@@ -77,9 +81,10 @@ public class Battle : MonoBehaviour
 		bearScript = bear.GetComponent<Bear>();
 		playerMovementScript = player.GetComponent<CharacterMovement>();
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
-		bearMovementScript = bear.GetComponent<CharacterMovement>();
 		
 		// Initialize battle flags
+		wait = false;
+		timer = 0f;
 		reload = false;
 		dogClose = false;
 		bark = false;
@@ -106,6 +111,9 @@ public class Battle : MonoBehaviour
 		
 		// Play battle music
 		audioSource.Play();
+		
+		// Set initial bear turn direction
+		bearTurnDirection = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -158,15 +166,23 @@ public class Battle : MonoBehaviour
 			bearAPGauge = bearScript.AP.Value;
 			bearAT = bearScript.attack.Value;
 			bark = false;
+			bearTurnDirection = Random.Range(0, 2);
 			currentTurn = Turn.player;
 		}
 		
-		// Switch case for turn
-		switch (currentTurn)
+		if (!wait)
 		{
-			case Turn.player: playerAction(); break;
-			case Turn.dog: dogAction(); break;
-			case Turn.bear: bearAction(); break;
+			// Switch case for turn
+			switch (currentTurn)
+			{
+				case Turn.player: playerAction(); break;
+				case Turn.dog: dogAction(); break;
+				case Turn.bear: bearScript.AI(); break;
+			}
+		}
+		else
+		{
+			cooldown();
 		}
 	}
 	
@@ -176,11 +192,13 @@ public class Battle : MonoBehaviour
 		if (Input.GetKeyDown("r"))
 		{
 			playerScript.Fire();
+			endAction();
 		}
 		
 		if (Input.GetKeyDown("f"))
 		{
 			playerScript.Reload();
+			endAction();
 		}
 		
 		if (Input.GetKeyDown("a") && !growl)
@@ -189,6 +207,7 @@ public class Battle : MonoBehaviour
 			{
 				playerAPGauge -= 1f;
 				playerMovementScript.MoveLeft();
+				endAction();
 			}
 			else
 			{
@@ -202,6 +221,7 @@ public class Battle : MonoBehaviour
 			{
 				playerAPGauge -= 1f;
 				playerMovementScript.MoveRight();
+				endAction();
 			}
 			else
 			{
@@ -219,11 +239,13 @@ public class Battle : MonoBehaviour
 		if (Input.GetKeyDown("r"))
 		{
 			dogScript.Bark();
+			endAction();
 		}
 		
 		if (Input.GetKeyDown("f"))
 		{
 			dogScript.Bite();
+			endAction();
 		}
 		
 		if (Input.GetKeyDown("left"))
@@ -233,6 +255,7 @@ public class Battle : MonoBehaviour
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveLeft();
 				dogClose = false;
+				endAction();
 			}
 			else
 			{
@@ -247,6 +270,7 @@ public class Battle : MonoBehaviour
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveRight();
 				dogClose = false;
+				endAction();
 			}
 			else
 			{
@@ -261,6 +285,7 @@ public class Battle : MonoBehaviour
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveUp();
 				dogClose = true;
+				endAction();
 			}
 			else if (dogClose)
 			{
@@ -279,6 +304,7 @@ public class Battle : MonoBehaviour
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveDown();
 				dogClose = false;
+				endAction();
 			}
 			else if (!dogClose)
 			{
@@ -295,6 +321,7 @@ public class Battle : MonoBehaviour
 	}
 	
 	// bear actions are called by bear AI. For now just autorun Swipe
+	/*
 	void bearAction()
 	{
 		// DEBUG ONLY
@@ -313,10 +340,10 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("z"))
 		{
-			if (bearAPGauge >= 1f)
+			if (bearAPGauge >= 3f)
 			{
-				bearAPGauge -= 1f;
-				bearMovementScript.TurnLeft();
+				bearAPGauge -= 3f;
+				//bearMovementScript.TurnLeft();
 			}
 			else
 			{
@@ -326,10 +353,10 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("c"))
 		{
-			if (bearAPGauge >= 1f)
+			if (bearAPGauge >= 3f)
 			{
-				bearAPGauge -= 1f;
-				bearMovementScript.TurnRight();
+				bearAPGauge -= 3f;
+				//bearMovementScript.TurnRight();
 			}
 			else
 			{
@@ -337,6 +364,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 	}
+	*/
 	
 	// Show game over screen and send back to title for now
 	void gameOver()
@@ -349,4 +377,24 @@ public class Battle : MonoBehaviour
 	{
         SceneManager.LoadScene(victoryScreen);
     }
+	
+	// end anction and start cooldown
+	public void endAction()
+	{
+		wait = true;
+		timer = 0f;
+	}
+	
+	// Wait until action cooldown ends
+	void cooldown()
+	{
+		if (timer >= 1f)
+		{
+			wait = false;
+		}
+		else
+		{
+			timer += 0.25f * Time.deltaTime;
+		}
+	}
 }

@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
 	// Link dog navmesh angent
 	public NavMeshAgent character;
 	// Index for dog positions list
-	[SerializeField] private int positionIndex;
+	public int positionIndex;
 	// Reference to player and bear gameobject
 	public GameObject bear;
 
