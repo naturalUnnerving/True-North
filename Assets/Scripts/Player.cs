@@ -1,5 +1,7 @@
 using UnityEngine;
 using TrueNorth.CharacterStats;
+using System.Threading.Tasks;
+using System;
 
 // Main Player Class
 public class Player : MonoBehaviour
@@ -16,6 +18,10 @@ public class Player : MonoBehaviour
 	
 	// Sound Effects
 	//public AudioSource audioSource;
+
+	// Rifle VFX
+	public GameObject rifleVFX;
+	private float rifleVFXDuration = 2f;
 	
 	// raycast for rifle
 	Ray ray;
@@ -40,7 +46,7 @@ public class Player : MonoBehaviour
 	
 	// Player fire
 	// Damage: front not very effective (x0.5), side effective (x1.0), back super effective (x1.5)
-	public void Fire()
+	public async void Fire()
 	{
 		if (battleScript.playerAPGauge >= 3f && !battleScript.reload)
 		{
@@ -74,6 +80,11 @@ public class Player : MonoBehaviour
 				}
 			}
 			battleScript.reload = true;
+
+			// Play rifle VFX
+			rifleVFX.SetActive(true);
+			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDuration));
+			rifleVFX.SetActive(false);
 		}
 		else if (battleScript.reload)
 		{

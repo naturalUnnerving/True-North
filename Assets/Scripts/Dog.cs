@@ -1,5 +1,7 @@
 using UnityEngine;
 using TrueNorth.CharacterStats;
+using System.Threading.Tasks;
+using System;
 
 // Main dog class
 public class Dog : MonoBehaviour
@@ -22,6 +24,10 @@ public class Dog : MonoBehaviour
 	
 	// Animation
 	private Animator anim;
+
+	// Dog bark VFX
+	public GameObject barkVFX;
+	private float barkVFXDuration = 2f;
 	
 	void Start()
 	{
@@ -36,7 +42,7 @@ public class Dog : MonoBehaviour
 	}
 	
     // Dog bark/guard (reduce bear damage for next turn)
-	public void Bark()
+	public async void Bark()
 	{
 		if (battleScript.dogAPGauge >= 3f)
 		{
@@ -52,6 +58,11 @@ public class Dog : MonoBehaviour
 		
 			if (!battleScript.bark) battleScript.bearAT *= 0.5f;
 			battleScript.bark = true;
+
+			// Play Bark VFX
+			barkVFX.SetActive(true);
+			await Task.Delay(TimeSpan.FromSeconds(barkVFXDuration));
+			barkVFX.SetActive(false);
 		}
 		else
 		{
