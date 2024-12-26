@@ -27,7 +27,9 @@ public class Dog : MonoBehaviour
 
 	// Dog bark VFX
 	public GameObject barkVFX;
-	private float barkVFXDuration = 2f;
+
+	[SerializeField]
+	private float barkVFXDuration;
 	
 	void Start()
 	{

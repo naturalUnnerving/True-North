@@ -376,6 +376,7 @@ MonoBehaviour:
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
   growlVFX: {fileID: 1395753305}
+  growlVFXDuration: 2
 --- !u!135 &192811814
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -538,6 +539,8 @@ MonoBehaviour:
   speed:
     BaseValue: 30
   rifleVFX: {fileID: 770526881}
+  rifleVFXDuration: 1.5
+  rifleVFXDelay: 1.2
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
 --- !u!1 &330496219
@@ -4282,6 +4285,7 @@ MonoBehaviour:
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
   barkVFX: {fileID: 135767067}
+  barkVFXDuration: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

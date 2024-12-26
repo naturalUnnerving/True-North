@@ -27,7 +27,9 @@ public class Bear : MonoBehaviour
 
 	// Bear Growl VFX
 	public GameObject growlVFX;
-	private float growlVFXDuration = 2f;
+
+	[SerializeField]
+	private float growlVFXDuration;
 	
 	void Start()
 	{

@@ -21,7 +21,11 @@ public class Player : MonoBehaviour
 
 	// Rifle VFX
 	public GameObject rifleVFX;
-	private float rifleVFXDuration = 2f;
+	
+	[SerializeField]
+	private float rifleVFXDuration;
+	[SerializeField]
+	private float rifleVFXDelay;
 	
 	// raycast for rifle
 	Ray ray;
@@ -82,6 +86,7 @@ public class Player : MonoBehaviour
 			battleScript.reload = true;
 
 			// Play rifle VFX
+			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDelay));
 			rifleVFX.SetActive(true);
 			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDuration));
 			rifleVFX.SetActive(false);
