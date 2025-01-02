@@ -11,15 +11,10 @@ public class Bear : MonoBehaviour
 	public CharacterStat defense = new CharacterStat(100f);
 	public CharacterStat speed = new CharacterStat(15f);
 	
-	// raycast for bite
-	Ray ray;
-	RaycastHit hitData;
-	public float dist;
-	
 	// Battle scene link
 	public GameObject battle;
 	public Battle battleScript;
-	public CharacterMovement bearMovementScript;
+	public BearMovement bearMovementScript;
 	
 	// Animation
 	private Animator anim;
@@ -28,12 +23,7 @@ public class Bear : MonoBehaviour
 	{
 		battleScript = battle.GetComponent<Battle>();
 		anim = GetComponentInChildren<Animator>();
-		bearMovementScript = battleScript.bear.GetComponent<CharacterMovement>();
-	}
-	
-	void Update()
-	{
-		ray = new Ray(transform.position, new Vector3(0, 0, -transform.forward.z));
+		bearMovementScript = battleScript.bear.GetComponent<BearMovement>();
 	}
 	
     // Bear Growl (intimidate, suggestion: lock movement)
@@ -73,17 +63,14 @@ public class Bear : MonoBehaviour
 			{
 				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
 			}
-		
-			if (Physics.Raycast(ray, out hitData))
+			
+			if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex)
 			{
-				if (hitData.collider.gameObject.name == "Player")
-				{
-					battleScript.playerHP -= battleScript.bearAT;
-				}
-				else if (hitData.collider.gameObject.name == "Dog")
-				{
-					battleScript.dogHP -= battleScript.bearAT;
-				}
+				battleScript.playerHP -= battleScript.bearAT;
+			}
+			else if (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)
+			{
+				battleScript.dogHP -= battleScript.bearAT;
 			}
 			else
 			{
@@ -103,7 +90,7 @@ public class Bear : MonoBehaviour
 		if (battleScript.bearHP >= 100f)
 		{
 			// Normal routine
-			if (Physics.Raycast(ray, out hitData) && battleScript.bearAPGauge >= 5f)
+			if ((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
 			{
 				if (battleScript.bearAPGauge >= 12f)
 				{
@@ -116,14 +103,11 @@ public class Bear : MonoBehaviour
 					battleScript.endAction();
 				}
 			}
-			else if (battleScript.bearAPGauge >= 3f)
+			else if (!(bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
 			{
 				battleScript.bearAPGauge -= 3f;
-				switch (battleScript.bearTurnDirection)
-				{
-					case 0: bearMovementScript.TurnLeft(); break;
-					case 1: bearMovementScript.TurnRight(); break;
-				}
+				if (battleScript.bearTurnDirection == 0) bearMovementScript.TurnLeft();
+				if (battleScript.bearTurnDirection == 1) bearMovementScript.TurnRight();
 				battleScript.endAction();
 			}
 			else
@@ -134,19 +118,16 @@ public class Bear : MonoBehaviour
 		else
 		{
 			// desperate routine
-			if (Physics.Raycast(ray, out hitData) && battleScript.bearAPGauge >= 5f)
+			if ((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
 			{
 				Swipe();
 				battleScript.endAction();
 			}
-			else if (battleScript.bearAPGauge >= 3f)
+			else if (!(bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
 			{
 				battleScript.bearAPGauge -= 3f;
-				switch (battleScript.bearTurnDirection)
-				{
-					case 0: bearMovementScript.TurnLeft(); break;
-					case 1: bearMovementScript.TurnRight(); break;
-				}
+				if (battleScript.bearTurnDirection == 0) bearMovementScript.TurnLeft();
+				if (battleScript.bearTurnDirection == 1) bearMovementScript.TurnRight();
 				battleScript.endAction();
 			}
 			else

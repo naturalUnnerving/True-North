@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharacterMovement : MonoBehaviour
+public class BearMovement : MonoBehaviour
 {
 	// Initialize player positions list
 	[SerializeField] private List<Vector3> characterPositions = new List<Vector3>();
@@ -28,10 +28,10 @@ public class CharacterMovement : MonoBehaviour
 		Vector3 bearBack = new Vector3(bear.transform.position.x, bear.transform.position.y, bear.transform.position.z + 15f);
 		Vector3 bearLeft = new Vector3(bear.transform.position.x + 15f, bear.transform.position.y, bear.transform.position.z);
 		Vector3 bearRight = new Vector3(bear.transform.position.x - 15f, bear.transform.position.y, bear.transform.position.z);
-		characterPositions.Add(bearFront); // pos 0
-		characterPositions.Add(bearLeft); // pos 1
-		characterPositions.Add(bearBack); // pos 2
-		characterPositions.Add(bearRight); // pos 3
+		characterPositions.Add(bearBack); // pos 0
+		characterPositions.Add(bearRight); // pos 1
+		characterPositions.Add(bearFront); // pos 2
+		characterPositions.Add(bearLeft); // pos 3
 		
 		// Initialize dog starting position to be next to player
 		positionIndex = 0;

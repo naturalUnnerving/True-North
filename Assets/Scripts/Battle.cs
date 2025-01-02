@@ -13,6 +13,7 @@ public class Battle : MonoBehaviour
 	public bool dogClose;
 	public bool bark;
 	public bool growl;
+	public bool dogDead;
 	
 	// Random bear turn direction
 	public int bearTurnDirection;
@@ -43,6 +44,7 @@ public class Battle : MonoBehaviour
 	public Bear bearScript;
 	public CharacterMovement playerMovementScript;
 	public CharacterMovement dogMovementScript;
+	//public BearMovement bearMovementScript;
 	
 	//Scenes
 	[SerializeField] private string victoryScreen;
@@ -81,6 +83,7 @@ public class Battle : MonoBehaviour
 		bearScript = bear.GetComponent<Bear>();
 		playerMovementScript = player.GetComponent<CharacterMovement>();
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
+		//bearMovementScript = bear.GetComponent<BearMovement>();
 		
 		// Initialize battle flags
 		wait = false;
@@ -89,6 +92,7 @@ public class Battle : MonoBehaviour
 		dogClose = false;
 		bark = false;
 		growl = false;
+		dogDead = false;
 		
 		// Set player to alive and to have first turn
 		currentHealthState = HealthState.alive;
@@ -129,6 +133,9 @@ public class Battle : MonoBehaviour
             currentHealthState = HealthState.bearDead;
         }
 		
+		// Check if dog is alive
+		if (dogHP <= 0f) dogDead = true;
+		
         //Switches case of currentHealthState when the above cases trigger
         switch (currentHealthState)
         {
@@ -151,7 +158,14 @@ public class Battle : MonoBehaviour
 		if (playerAPGauge <= 0f)
 		{
 			playerAPGauge = playerScript.AP.Value;
-			currentTurn = Turn.dog;
+			if (dogDead)
+			{
+				currentTurn = Turn.bear;
+			}
+			else
+			{
+				currentTurn = Turn.dog;
+			}
 			growl = false;
 		}
 		
@@ -343,7 +357,7 @@ public class Battle : MonoBehaviour
 			if (bearAPGauge >= 3f)
 			{
 				bearAPGauge -= 3f;
-				//bearMovementScript.TurnLeft();
+				bearMovementScript.TurnLeft();
 			}
 			else
 			{
@@ -356,7 +370,7 @@ public class Battle : MonoBehaviour
 			if (bearAPGauge >= 3f)
 			{
 				bearAPGauge -= 3f;
-				//bearMovementScript.TurnRight();
+				bearMovementScript.TurnRight();
 			}
 			else
 			{
