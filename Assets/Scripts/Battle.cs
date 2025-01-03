@@ -349,4 +349,130 @@ public class Battle : MonoBehaviour
 	{
         SceneManager.LoadScene(victoryScreen);
     }
+
+	public void PlyerFire()
+	{
+        playerScript.Fire();
+    }
+
+	public void PlayerReload()
+	{
+        playerScript.Reload();
+    }
+
+	public void PlayerMoveLeft()
+	{
+		if (!growl)
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveLeft();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+	}
+
+	public void PlayerMoveRight()
+	{
+		if (!growl)
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveRight();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+    }
+
+	public void PlayerQuit()
+	{
+        playerAPGauge = 0f;
+    }
+
+	public void DogBark()
+	{
+        dogScript.Bark();
+    }
+
+	public void DogBit()
+	{
+        dogScript.Bite();
+    }
+
+	public void DogMoveLeft()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveLeft();
+            dogClose = false;
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveRight()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveRight();
+            dogClose = false;
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveUp()
+	{
+        if (dogAPGauge >= 1f && !dogClose)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveUp();
+            dogClose = true;
+        }
+        else if (dogClose)
+        {
+            Debug.Log("Dog already at bear!");
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveDown()
+	{
+        if (dogAPGauge >= 1f && dogClose)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveDown();
+            dogClose = false;
+        }
+        else if (!dogClose)
+        {
+            Debug.Log("Dog already away from bear!");
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogQuit()
+	{
+        dogAPGauge = 0f;
+    }
 }
