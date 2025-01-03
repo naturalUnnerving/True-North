@@ -15,6 +15,9 @@ public class Battle : MonoBehaviour
 	public bool growl;
 	public bool dogDead;
 	
+	// Pause the game
+	bool paused = false;
+	
 	// Random bear turn direction
 	public int bearTurnDirection;
 	
@@ -49,6 +52,8 @@ public class Battle : MonoBehaviour
 	//Scenes
 	[SerializeField] private string victoryScreen;
 	[SerializeField] private string gameOverScreen;
+	[SerializeField] private string OptionsScreen;
+	[SerializeField] private string TitleScreen;
 	
 	// Music system
 	public AudioSource audioSource;
@@ -123,6 +128,9 @@ public class Battle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// Pause the game
+		if(Input.GetKeyDown(KeyCode.Escape)) paused = togglePause();
+		
 		//Checks Players current Health State
         if (playerHP <= 0f)
         {
@@ -184,19 +192,22 @@ public class Battle : MonoBehaviour
 			currentTurn = Turn.player;
 		}
 		
-		if (!wait)
+		if (!paused)
 		{
-			// Switch case for turn
-			switch (currentTurn)
+			if (!wait)
 			{
-				case Turn.player: playerAction(); break;
-				case Turn.dog: dogAction(); break;
-				case Turn.bear: bearScript.AI(); break;
+				// Switch case for turn
+				switch (currentTurn)
+				{
+					case Turn.player: playerAction(); break;
+					case Turn.dog: dogAction(); break;
+					case Turn.bear: bearScript.AI(); break;
+				}
 			}
-		}
-		else
-		{
-			cooldown();
+			else
+			{
+				cooldown();
+			}
 		}
 	}
 	
@@ -402,13 +413,66 @@ public class Battle : MonoBehaviour
 	// Wait until action cooldown ends
 	void cooldown()
 	{
-		if (timer >= 1f)
+		if (currentTurn == Turn.player)
 		{
-			wait = false;
+			if (timer >= 1.3f)
+			{
+				wait = false;
+			}
+			else
+			{
+				timer += 0.25f * Time.deltaTime;
+			}
+		}
+		else if (currentTurn == Turn.dog)
+		{
+			if (timer >= 1f)
+			{
+				wait = false;
+			}
+			else
+			{
+				timer += 0.25f * Time.deltaTime;
+			}
+		}
+		else if (currentTurn == Turn.bear)
+		{
+			if (timer >= 0.6f)
+			{
+				wait = false;
+			}
+			else
+			{
+				timer += 0.25f * Time.deltaTime;
+			}
+		}
+	}
+	
+	// Pause the game
+	void OnGUI()
+	{
+		if(paused)
+		{
+			GUILayout.Label("Paused");
+			if(GUILayout.Button("Resume")) paused = togglePause();
+			if(GUILayout.Button("Options")) SceneManager.LoadScene(OptionsScreen);
+			if(GUILayout.Button("Return to title")) SceneManager.LoadScene(TitleScreen);
+		}
+	}
+	
+	bool togglePause()
+	{
+		if(Time.timeScale == 0f)
+		{
+			Time.timeScale = 1f;
+			AudioListener.pause = false;
+			return(false);
 		}
 		else
 		{
-			timer += 0.25f * Time.deltaTime;
+			Time.timeScale = 0f;
+			AudioListener.pause = true;
+			return(true);	
 		}
 	}
 }

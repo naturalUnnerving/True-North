@@ -3312,6 +3312,8 @@ MonoBehaviour:
   dogMovementScript: {fileID: 0}
   victoryScreen: VictoryScreen
   gameOverScreen: GameOverScreen
+  OptionsScreen: OptionsScreen
+  TitleScreen: TitleScreen
   audioSource: {fileID: 330496220}
 --- !u!114 &1989869674
 MonoBehaviour:
@@ -3387,12 +3389,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Welcome to TrueNorth Alpha build!\nAs a matagi hunter, armed with a single
     shot rifle, your goal is to defeat the posessed bear with the\nhelp of your Akita
-    dog.\n\nCharacter Controls:\nMatagi Hunter:\n\ta - move left\n\td - move right\n\tr
-    - fire\n\tf - reload\n\tq - end turn\nAkita dog:\n\tup arrow - move forward\n\tleft
-    arrow - move left\n\tdown arrow - move backward\n\tright arrow - move right\n\tr
-    - bark (reduce attack)\n\tf - bite\n\tq - end turn\nBear:\n\tz - turn left\n\tc
-    - turn right\n\tr - growl (freeze movement for turn)\n\tf - swipe\n\tq - end
-    turn"
+    dog.\n\nPause the game with escape\n\nCharacter Controls:\nMatagi Hunter:\n\ta
+    - move left\n\td - move right\n\tr - fire\n\tf - reload\n\tq - end turn\nAkita
+    dog:\n\tup arrow - move forward\n\tleft arrow - move left\n\tdown arrow - move
+    backward\n\tright arrow - move right\n\tr - bark (reduce attack)\n\tf - bite\n\tq
+    - end turn\nBear:\n\tz - turn left\n\tc - turn right\n\tr - growl (freeze movement
+    for turn)\n\tf - swipe\n\tq - end turn"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
