@@ -1,0 +1,1038 @@
+fileFormatVersion: 2
+guid: c5da826848f65f04da465a07f0c427c8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bear_RoarFire00_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189287230d087cd4a931fb8f9e72e0f5
+      internalID: -647920210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_1
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37212ce5a0e45b42a8a2e0239093a0c
+      internalID: -48629661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_2
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57c4bfe6e8047343b785c739d72eae7
+      internalID: -133158855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_3
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ec4d74419f70d4db41d1c12f3ea2d4
+      internalID: -596383510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_4
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebd96108aa47024285182118bd7a3d7
+      internalID: -458595558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_5
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef12ae22487bd1846812a87446b8ce9a
+      internalID: -2138371544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_6
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1350
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6783496229dc47e4ab0175659a4dbe65
+      internalID: 1846144423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f3b1067a4823a49860a327812bef73
+      internalID: -676391715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_8
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de58f90358671d45ad7b6d5a959fc62
+      internalID: 294840492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f574b9f150a4649883b6fe1a00a2d1
+      internalID: -104185621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_10
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154fef10ff2fe404faae1e4cbdbb6168
+      internalID: 560311306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_11
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35239e6facbe7a045b2b740dc2c1a77e
+      internalID: 292556624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_12
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4401c8d49f8c3fa449698c860cc384a5
+      internalID: -2087332007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_13
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1080
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b419284a6965914c8471743cb28d08c
+      internalID: 1804711111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f166f472ce6734d89411f021c8ea97
+      internalID: -1688840459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_15
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ce5673131a5b7478a4e72aff762da9
+      internalID: -727042900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_16
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f077b88252220e549adb648cbfd03e58
+      internalID: -1940744800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_17
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59066f16c5a00b4fa7442bd8c9a204b
+      internalID: -931358610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_18
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0e1bcc5e599e147b736fbd30adb286
+      internalID: 184873084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_19
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8d05ff74f63d244a2ef19739e4d7f2
+      internalID: -1145187578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_20
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 810
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a4e696441df6d4290a0dfff0717cc7
+      internalID: 1820570203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9752ad4209ab143a0b499ea911c7bb
+      internalID: 1652953325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_22
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0bb7ac6eb3a6a48a5cdc291463dd58
+      internalID: 1244955729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_23
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2acc5672849b28246a30b4fb51256699
+      internalID: 1727429225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_24
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff79d246485d43479fd2c43720341c9
+      internalID: 1061719024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_25
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b8161a9298429439300cea90693dc5
+      internalID: 1529372392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_26
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc29b22b4d432f4abe5b726c18180df
+      internalID: -1722587413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_27
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 540
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1701938eceda649b73d25364869835
+      internalID: 307588846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d2d5b31f33aaa4caa7067f429e9022
+      internalID: 1884197394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_29
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964459b991f619a438fc772e3be3e634
+      internalID: -906784416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_30
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f9ce175fad31247bda93e715550d15
+      internalID: -385251134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_31
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a175441270d174540a9613e01a3e7424
+      internalID: 1781816476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_32
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed7fcf622175dcb429dba2211d44e878
+      internalID: -1940132337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_33
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae5051e930195541bde237aa54c3221
+      internalID: -2005191418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_34
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 270
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dddc527070e99c14e8d5ee13f173338c
+      internalID: -633715945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09006cb9d333cdd439c65a4058e0de0a
+      internalID: 213691735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_36
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb010390d6748f4ca1a817e12d4791f
+      internalID: -111605107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_37
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a41c7a288c4b54b95d046c695c9993
+      internalID: -308711361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_38
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c00a15598d463488618780c8dbb26e
+      internalID: -1234945527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_39
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc1ae446bdab9045a3b2960f6ae7713
+      internalID: -1603341505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_40
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e362387812f6849847391d42deb400
+      internalID: -1481579808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bear_RoarFire00_41
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 0
+        width: 525
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f00949c763350b4da32c17a5785092b
+      internalID: -310913210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 357db85196471b74bbdb030cddcaa141
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      bear_RoarFire00_0: -647920210
+      bear_RoarFire00_1: -48629661
+      bear_RoarFire00_10: 560311306
+      bear_RoarFire00_11: 292556624
+      bear_RoarFire00_12: -2087332007
+      bear_RoarFire00_13: 1804711111
+      bear_RoarFire00_14: -1688840459
+      bear_RoarFire00_15: -727042900
+      bear_RoarFire00_16: -1940744800
+      bear_RoarFire00_17: -931358610
+      bear_RoarFire00_18: 184873084
+      bear_RoarFire00_19: -1145187578
+      bear_RoarFire00_2: -133158855
+      bear_RoarFire00_20: 1820570203
+      bear_RoarFire00_21: 1652953325
+      bear_RoarFire00_22: 1244955729
+      bear_RoarFire00_23: 1727429225
+      bear_RoarFire00_24: 1061719024
+      bear_RoarFire00_25: 1529372392
+      bear_RoarFire00_26: -1722587413
+      bear_RoarFire00_27: 307588846
+      bear_RoarFire00_28: 1884197394
+      bear_RoarFire00_29: -906784416
+      bear_RoarFire00_3: -596383510
+      bear_RoarFire00_30: -385251134
+      bear_RoarFire00_31: 1781816476
+      bear_RoarFire00_32: -1940132337
+      bear_RoarFire00_33: -2005191418
+      bear_RoarFire00_34: -633715945
+      bear_RoarFire00_35: 213691735
+      bear_RoarFire00_36: -111605107
+      bear_RoarFire00_37: -308711361
+      bear_RoarFire00_38: -1234945527
+      bear_RoarFire00_39: -1603341505
+      bear_RoarFire00_4: -458595558
+      bear_RoarFire00_40: -1481579808
+      bear_RoarFire00_41: -310913210
+      bear_RoarFire00_5: -2138371544
+      bear_RoarFire00_6: 1846144423
+      bear_RoarFire00_7: -676391715
+      bear_RoarFire00_8: 294840492
+      bear_RoarFire00_9: -104185621
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
