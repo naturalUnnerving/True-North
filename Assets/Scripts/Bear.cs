@@ -1,5 +1,7 @@
 using UnityEngine;
 using TrueNorth.CharacterStats;
+using System;
+using System.Threading.Tasks;
 
 // Main Bear class
 public class Bear : MonoBehaviour
@@ -18,6 +20,12 @@ public class Bear : MonoBehaviour
 	
 	// Animation
 	private Animator anim;
+
+	// Bear Growl VFX
+	public GameObject growlVFX;
+
+	[SerializeField]
+	private float growlVFXDuration;
 	
 	void Start()
 	{
@@ -27,7 +35,7 @@ public class Bear : MonoBehaviour
 	}
 	
     // Bear Growl (intimidate, suggestion: lock movement)
-	public void Growl()
+	public async void Growl()
 	{
 		if (battleScript.bearAPGauge >= 5f)
 		{
@@ -42,6 +50,11 @@ public class Bear : MonoBehaviour
 			
 			battleScript.bearAPGauge -= 5f;
 			battleScript.growl = true;
+
+			// Play Growl VFX
+			growlVFX.SetActive(true);
+			await Task.Delay(TimeSpan.FromSeconds(growlVFXDuration));
+			growlVFX.SetActive(false);
 		}
 		else
 		{
