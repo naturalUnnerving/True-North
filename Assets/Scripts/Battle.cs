@@ -47,7 +47,7 @@ public class Battle : MonoBehaviour
 	public Bear bearScript;
 	public CharacterMovement playerMovementScript;
 	public CharacterMovement dogMovementScript;
-	//public BearMovement bearMovementScript;
+	public BearMovement bearMovementScript;
 	
 	//Scenes
 	[SerializeField] private string victoryScreen;
@@ -88,7 +88,7 @@ public class Battle : MonoBehaviour
 		bearScript = bear.GetComponent<Bear>();
 		playerMovementScript = player.GetComponent<CharacterMovement>();
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
-		//bearMovementScript = bear.GetComponent<BearMovement>();
+		bearMovementScript = bear.GetComponent<BearMovement>();
 		
 		// Initialize battle flags
 		wait = false;
@@ -346,7 +346,7 @@ public class Battle : MonoBehaviour
 	}
 	
 	// bear actions are called by bear AI. For now just autorun Swipe
-	/*
+
 	void bearAction()
 	{
 		// DEBUG ONLY
@@ -389,7 +389,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 	}
-	*/
+
 	
 	// Show game over screen and send back to title for now
 	void gameOver()
