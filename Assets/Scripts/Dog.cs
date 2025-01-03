@@ -62,7 +62,7 @@ public class Dog : MonoBehaviour
 	// Dog bite
 	public void Bite()
 	{
-		if (battleScript.dogAPGauge >= 5f && battleScript.dogClose && dist <= 2f)
+		if (battleScript.dogAPGauge >= 5f && battleScript.dogMovementScript.near)
 			{
 				battleScript.dogAPGauge -= 5f;
 				// DEBUG CALL
@@ -76,7 +76,7 @@ public class Dog : MonoBehaviour
 		
 				battleScript.bearHP -= battleScript.dogAT;
 			}
-			else if (!battleScript.dogClose)
+			else if (!battleScript.dogMovementScript.near)
 			{
 				Debug.Log("Dog not close enough");
 			}

@@ -64,13 +64,17 @@ public class Bear : MonoBehaviour
 				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
 			}
 			
-			if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex)
+	if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8)
 			{
-				battleScript.playerHP -= battleScript.bearAT;
+				if (battleScript.playerMovementScript.far) battleScript.playerHP -= battleScript.bearAT;
+				if (battleScript.playerMovementScript.middle) battleScript.playerHP -= battleScript.bearAT;
+				if (battleScript.playerMovementScript.near) battleScript.playerHP -= battleScript.bearAT;
 			}
-			else if (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)
+			else if ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)
 			{
-				battleScript.dogHP -= battleScript.bearAT;
+				if (battleScript.dogMovementScript.far) battleScript.dogHP -= battleScript.bearAT;
+				if (battleScript.dogMovementScript.middle) battleScript.dogHP -= battleScript.bearAT;
+				if (battleScript.dogMovementScript.near) battleScript.dogHP -= battleScript.bearAT;
 			}
 			else
 			{
@@ -90,7 +94,7 @@ public class Bear : MonoBehaviour
 		if (battleScript.bearHP >= 100f)
 		{
 			// Normal routine
-			if ((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
+			if (((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8) || ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
 			{
 				if (battleScript.bearAPGauge >= 12f)
 				{
@@ -103,7 +107,7 @@ public class Bear : MonoBehaviour
 					battleScript.endAction();
 				}
 			}
-			else if (!(bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
+			else if (!((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8) || ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
 			{
 				battleScript.bearAPGauge -= 3f;
 				if (battleScript.bearTurnDirection == 0) bearMovementScript.TurnLeft();
@@ -118,12 +122,12 @@ public class Bear : MonoBehaviour
 		else
 		{
 			// desperate routine
-			if ((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
+			if (((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8) || ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)) && battleScript.bearAPGauge >= 5f)
 			{
 				Swipe();
 				battleScript.endAction();
 			}
-			else if (!(bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || (bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
+			else if (!((bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8) || ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)) && battleScript.bearAPGauge >= 3f)
 			{
 				battleScript.bearAPGauge -= 3f;
 				if (battleScript.bearTurnDirection == 0) bearMovementScript.TurnLeft();

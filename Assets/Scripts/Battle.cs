@@ -10,7 +10,6 @@ public class Battle : MonoBehaviour
 	public bool wait;
 	public float timer;
 	public bool reload;
-	public bool dogClose;
 	public bool bark;
 	public bool growl;
 	public bool dogDead;
@@ -94,7 +93,6 @@ public class Battle : MonoBehaviour
 		wait = false;
 		timer = 0f;
 		reload = false;
-		dogClose = false;
 		bark = false;
 		growl = false;
 		dogDead = false;
@@ -254,6 +252,42 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
+		if (Input.GetKeyDown("w"))
+		{
+			if (playerAPGauge >= 1f && !playerMovementScript.near)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveUp();
+				endAction();
+			}
+			else if (playerMovementScript.near)
+			{
+				playerMovementScript.MoveUp();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
+		if (Input.GetKeyDown("s"))
+		{
+			if (playerAPGauge >= 1f && !playerMovementScript.far)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveDown();
+				endAction();
+			}
+			else if (playerMovementScript.far)
+			{
+				playerMovementScript.MoveDown();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+		
 		// End turn
 		if (Input.GetKeyDown("q")) playerAPGauge = 0f;
 	}
@@ -279,7 +313,6 @@ public class Battle : MonoBehaviour
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveLeft();
-				dogClose = false;
 				endAction();
 			}
 			else
@@ -294,7 +327,6 @@ public class Battle : MonoBehaviour
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveRight();
-				dogClose = false;
 				endAction();
 			}
 			else
@@ -305,16 +337,15 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("up"))
 		{
-			if (dogAPGauge >= 1f && !dogClose)
+			if (dogAPGauge >= 1f && !dogMovementScript.near)
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveUp();
-				dogClose = true;
 				endAction();
 			}
-			else if (dogClose)
+			else if (dogMovementScript.near)
 			{
-				Debug.Log("Dog already at bear!");
+				dogMovementScript.MoveUp();
 			}
 			else
 			{
@@ -324,16 +355,15 @@ public class Battle : MonoBehaviour
 		
 		if (Input.GetKeyDown("down"))
 		{
-			if (dogAPGauge >= 1f && dogClose)
+			if (dogAPGauge >= 1f && !dogMovementScript.far)
 			{
 				dogAPGauge -= 1f;
 				dogMovementScript.MoveDown();
-				dogClose = false;
 				endAction();
 			}
-			else if (!dogClose)
+			else if (dogMovementScript.far)
 			{
-				Debug.Log("Dog already away from bear!");
+				dogMovementScript.MoveDown();
 			}
 			else
 			{
