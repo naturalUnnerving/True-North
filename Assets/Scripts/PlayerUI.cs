@@ -12,6 +12,9 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Button moveLeft;
     [SerializeField] Button fire;
     [SerializeField] Button reload;
+    [SerializeField] Button quit;
+    [SerializeField] GameObject action;
+    [SerializeField] TextMeshProUGUI actionText; 
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] GameObject playerAP;
@@ -33,6 +36,11 @@ public class PlayerUI : MonoBehaviour
         playerHPMaxValue = player.HP.Value;
         playerAPMaxValue = player.AP.Value;
         lastAP = playerAPMaxValue;
+
+        moveLeft.onClick.AddListener(MoveLeftBtnPressed);
+        moveRight.onClick.AddListener(MoveRightBtnPressed);
+        fire.onClick.AddListener(FireBtnPressed);
+        reload.onClick.AddListener(ReloadBtnPressed);
     }
 
     // Update is called once per frame
@@ -90,16 +98,57 @@ public class PlayerUI : MonoBehaviour
                 lastAP -= 1;
             }
         }
-        else
+        else if (lastAP < battle.playerAPGauge)
         {
             while (lastAP != battle.playerAPGauge)
             {
-                playerAP.transform.GetChild((int)lastAP - 1).GetComponent<Image>().sprite = enableAP;
+                playerAP.transform.GetChild((int)lastAP).GetComponent<Image>().sprite = enableAP;
                 lastAP += 1;
             }
         }
         
         apText.text = battle.playerAPGauge+ "/" + playerAPMaxValue;
     }
-    
+
+
+    void MoveLeftBtnPressed()
+    {
+        action.SetActive(true);
+        actionText.text = "Move Left";
+        StartCoroutine(HideActionAfter1Second());
+    }
+
+    void MoveRightBtnPressed()
+    {
+        action.SetActive(true);
+        actionText.text = "Move Right";
+        StartCoroutine(HideActionAfter1Second());
+    }
+
+    void FireBtnPressed()
+    {
+        action.SetActive(true);
+        actionText.text = "Fire";
+        StartCoroutine(HideActionAfter1Second());
+    }
+
+    void ReloadBtnPressed()
+    {
+        action.SetActive(true);
+        actionText.text = "Reload";
+        StartCoroutine(HideActionAfter1Second());
+    }
+
+    void QuitBtnPressed()
+    {
+        action.SetActive(true);
+        actionText.text = "Quit";
+        StartCoroutine(HideActionAfter1Second());
+    }
+
+    IEnumerator HideActionAfter1Second()
+    {
+        yield return new WaitForSeconds(3);
+        action.SetActive(false);
+    }
 }
