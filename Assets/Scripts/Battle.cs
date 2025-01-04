@@ -447,7 +447,7 @@ public class Battle : MonoBehaviour
 	{
 		if (currentTurn == Turn.player)
 		{
-			if (timer >= 1.3f)
+			if (timer >= 0.8f)
 			{
 				wait = false;
 			}
@@ -458,7 +458,7 @@ public class Battle : MonoBehaviour
 		}
 		else if (currentTurn == Turn.dog)
 		{
-			if (timer >= 1f)
+			if (timer >= 0.8f)
 			{
 				wait = false;
 			}
