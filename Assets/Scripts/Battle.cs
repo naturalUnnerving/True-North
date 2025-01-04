@@ -53,6 +53,7 @@ public class Battle : MonoBehaviour
 	[SerializeField] private string gameOverScreen;
 	[SerializeField] private string OptionsScreen;
 	[SerializeField] private string TitleScreen;
+	[SerializeField] private string BattleScene;
 	
 	// Music system
 	public AudioSource audioSource;
@@ -79,6 +80,7 @@ public class Battle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		Time.timeScale = 1f;
         /* Instanciate actors, play battle music (when music system is set up),
 		play opening animations, dialogue, etc...
 		Run when battle scene loads */
@@ -485,8 +487,12 @@ public class Battle : MonoBehaviour
 		{
 			GUILayout.Label("Paused");
 			if(GUILayout.Button("Resume")) paused = togglePause();
-			if(GUILayout.Button("Options")) SceneManager.LoadScene(OptionsScreen);
-			if(GUILayout.Button("Return to title")) SceneManager.LoadScene(TitleScreen);
+			if(GUILayout.Button("Options")) SceneManager.LoadSceneAsync(OptionsScreen);
+			if(GUILayout.Button("Return to title"))
+			{
+				SceneManager.UnloadSceneAsync(BattleScene);
+				SceneManager.LoadScene(TitleScreen);
+			}
 		}
 	}
 	

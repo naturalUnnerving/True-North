@@ -378,6 +378,9 @@ MonoBehaviour:
   positionIndex: 0
   bear: {fileID: 192811791}
   rotateTime: 0.5
+  far: 0
+  middle: 0
+  near: 0
 --- !u!114 &231046718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3288,7 +3291,6 @@ MonoBehaviour:
   wait: 0
   timer: 0
   reload: 0
-  dogClose: 0
   bark: 0
   growl: 0
   dogDead: 0
@@ -3314,6 +3316,7 @@ MonoBehaviour:
   gameOverScreen: GameOverScreen
   OptionsScreen: OptionsScreen
   TitleScreen: TitleScreen
+  BattleScene: Main
   audioSource: {fileID: 330496220}
 --- !u!114 &1989869674
 MonoBehaviour:
@@ -3738,6 +3741,9 @@ MonoBehaviour:
   positionIndex: 0
   bear: {fileID: 192811791}
   rotateTime: 0.5
+  far: 0
+  middle: 0
+  near: 0
 --- !u!114 &7096444494194715394
 MonoBehaviour:
   m_ObjectHideFlags: 0
