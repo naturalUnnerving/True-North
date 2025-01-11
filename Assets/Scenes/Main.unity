@@ -286,8 +286,14 @@ MonoBehaviour:
   battleScript: {fileID: 0}
   bearMovementScript: {fileID: 0}
   dist: 0
-  growlVFX: {fileID: 1130730178}
-  growlVFXDuration: 2
+  growlVFX: {fileID: 308260121}
+  growlAuraVFX: {fileID: 1130730178}
+  swipeVFX: {fileID: 556470621}
+  growlVFXDuration: 0.1
+  growlVFXDelay: 0.6
+  growlAuraVFXDuration: 1.2
+  swipeVFXDelay: 0.8
+  swipeVFXDuration: 0.1
 --- !u!1 &229702086
 GameObject:
   m_ObjectHideFlags: 3
@@ -428,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &308260122
 Transform:
   m_ObjectHideFlags: 0
@@ -999,7 +1005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &556470622
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,7 +1015,7 @@ Transform:
   m_GameObject: {fileID: 556470621}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.113, y: 0.12, z: -1.55}
+  m_LocalPosition: {x: 0.137, y: -0.379, z: -0.957}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1233,7 +1239,7 @@ Transform:
   m_GameObject: {fileID: 749355035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.006, y: 0.25, z: 1.99}
+  m_LocalPosition: {x: -0.006, y: 0.212, z: 1.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3080,7 +3086,7 @@ Transform:
   m_GameObject: {fileID: 1462526908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.01, y: 0.013, z: 3.233}
+  m_LocalPosition: {x: -0.076, y: 0.178, z: 3.233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4326,7 +4332,7 @@ MonoBehaviour:
   battle: {fileID: 1989869671}
   battleScript: {fileID: 0}
   barkVFX: {fileID: 749355035}
-  barkVFXDuration: 1.5
+  barkVFXDuration: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

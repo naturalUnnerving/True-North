@@ -26,11 +26,21 @@ public class Bear : MonoBehaviour
 	RaycastHit hitData;
 	public float dist;
 
-	// Bear Growl VFX
+	// Bear VFX
 	public GameObject growlVFX;
+	public GameObject growlAuraVFX;
+	public GameObject swipeVFX;
 
 	[SerializeField]
 	private float growlVFXDuration;
+	[SerializeField]
+	private float growlVFXDelay;
+	[SerializeField]
+	private float growlAuraVFXDuration;
+	[SerializeField]
+	private float swipeVFXDelay;
+	[SerializeField]
+	private float swipeVFXDuration;
 	
 	void Start()
 	{
@@ -62,9 +72,16 @@ public class Bear : MonoBehaviour
 			battleScript.growl = true;
 
 			// Play Growl VFX
-			growlVFX.SetActive(true);
-			await Task.Delay(TimeSpan.FromSeconds(growlVFXDuration));
-			growlVFX.SetActive(false);
+			if(growlAuraVFX != null && growlVFX != null)
+			{
+				await Task.Delay(TimeSpan.FromSeconds(growlVFXDelay));
+				growlVFX.SetActive(true);
+				growlAuraVFX.SetActive(true);
+				await Task.Delay(TimeSpan.FromSeconds(growlVFXDuration));
+				await Task.Delay(TimeSpan.FromSeconds(growlAuraVFXDuration));
+				growlVFX.SetActive(false);
+				growlAuraVFX.SetActive(false);
+			}
 		}
 		else
 		{
@@ -73,10 +90,10 @@ public class Bear : MonoBehaviour
 	}
 	
 	// Bear swipe
-	public void Swipe()
+	public async void Swipe()
 	{
 		
-		if (battleScript.bearAPGauge >= 5f)
+		if (battleScript.bearAPGauge >= 5f && battleScript != null)
 		{
 			// DEBUG CALL
 			Debug.Log("BEAR SWIPE");
@@ -87,7 +104,7 @@ public class Bear : MonoBehaviour
 				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
 			}
 			
-	if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8)
+			if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8)
 			{
 				if (battleScript.playerMovementScript.far) battleScript.playerHP -= battleScript.bearAT;
 				if (battleScript.playerMovementScript.middle) battleScript.playerHP -= battleScript.bearAT;
@@ -105,6 +122,18 @@ public class Bear : MonoBehaviour
 			}
 			
 			battleScript.bearAPGauge -= 5f;
+
+			// Play Swipe VFX
+			if(swipeVFX != null)
+			{
+				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDelay));
+				swipeVFX.SetActive(true);
+				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDuration));
+				swipeVFX.SetActive(false);
+			}
+			else {
+				Debug.Log("Swipe VFX not found");
+			}
 		}
 		else
 		{
