@@ -51,20 +51,21 @@ public class Dog : MonoBehaviour
 			battleScript.dogAPGauge -= 3f;
 			// DEBUG CALL
 			Debug.Log("DOG BARK");
+
+			battleScript.bark = true;
 		
 			// Play bark animation and sound
 			if (anim != null)
 			{
 				anim.Play("Base Layer.RIG-Armature|Bark", 0, 0f);
 			}
-		
-			if (!battleScript.bark) battleScript.bearAT *= 0.5f;
-			battleScript.bark = true;
 
 			// Play Bark VFX
 			barkVFX.SetActive(true);
 			await Task.Delay(TimeSpan.FromSeconds(barkVFXDuration));
 			barkVFX.SetActive(false);
+		
+			if (!battleScript.bark) battleScript.bearAT *= 0.5f;
 		}
 		else
 		{
