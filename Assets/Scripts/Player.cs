@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
 			battleScript.playerAPGauge -= 3f;
 			// DEBUG CALL
 			Debug.Log("PLAYER FIRE");
+
+			battleScript.reload = true;
 		
 			// Play shooting animation and sound
 			if (anim != null)
@@ -66,6 +68,12 @@ public class Player : MonoBehaviour
 			}
 		
 			//audioSource.PlayOneShot(audioSource.clip, 1.0f);
+
+			// Play rifle VFX
+			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDelay));
+			rifleVFX.SetActive(true);
+			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDuration));
+			rifleVFX.SetActive(false);
 		
 			if (Physics.Raycast(ray, out hitData))
 			{
@@ -83,13 +91,6 @@ public class Player : MonoBehaviour
 					battleScript.bearHP -= 1.0f * battleScript.playerAT; // back shot
 				}
 			}
-			battleScript.reload = true;
-
-			// Play rifle VFX
-			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDelay));
-			rifleVFX.SetActive(true);
-			await Task.Delay(TimeSpan.FromSeconds(rifleVFXDuration));
-			rifleVFX.SetActive(false);
 		}
 		else if (battleScript.reload)
 		{

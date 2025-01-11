@@ -67,10 +67,9 @@ public class Bear : MonoBehaviour
 			{
 				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Roar", 0, 0f);
 			}
-			
-			battleScript.bearAPGauge -= 5f;
-			battleScript.growl = true;
 
+			battleScript.growl = true;
+			
 			// Play Growl VFX
 			if(growlAuraVFX != null && growlVFX != null)
 			{
@@ -82,6 +81,8 @@ public class Bear : MonoBehaviour
 				growlVFX.SetActive(false);
 				growlAuraVFX.SetActive(false);
 			}
+			
+			battleScript.bearAPGauge -= 5f;
 		}
 		else
 		{
@@ -103,6 +104,15 @@ public class Bear : MonoBehaviour
 			{
 				anim.Play("Base Layer.RIG-Armature|RIG-ANIM_Swipe", 0, 0f);
 			}
+
+			// Play Swipe VFX
+			if(swipeVFX != null)
+			{
+				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDelay));
+				swipeVFX.SetActive(true);
+				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDuration));
+				swipeVFX.SetActive(false);
+			}
 			
 			if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8)
 			{
@@ -122,18 +132,6 @@ public class Bear : MonoBehaviour
 			}
 			
 			battleScript.bearAPGauge -= 5f;
-
-			// Play Swipe VFX
-			if(swipeVFX != null)
-			{
-				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDelay));
-				swipeVFX.SetActive(true);
-				await Task.Delay(TimeSpan.FromSeconds(swipeVFXDuration));
-				swipeVFX.SetActive(false);
-			}
-			else {
-				Debug.Log("Swipe VFX not found");
-			}
 		}
 		else
 		{

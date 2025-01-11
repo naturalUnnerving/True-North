@@ -290,9 +290,9 @@ MonoBehaviour:
   growlAuraVFX: {fileID: 1130730178}
   swipeVFX: {fileID: 556470621}
   growlVFXDuration: 0.1
-  growlVFXDelay: 0.6
+  growlVFXDelay: 0.7
   growlAuraVFXDuration: 1.2
-  swipeVFXDelay: 0.8
+  swipeVFXDelay: 0.9
   swipeVFXDuration: 0.1
 --- !u!1 &229702086
 GameObject:
