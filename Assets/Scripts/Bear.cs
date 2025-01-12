@@ -116,14 +116,14 @@ public class Bear : MonoBehaviour
 			
 			if (bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.playerMovementScript.positionIndex - 8)
 			{
-				if (battleScript.playerMovementScript.far) battleScript.playerHP -= battleScript.bearAT;
-				if (battleScript.playerMovementScript.middle) battleScript.playerHP -= battleScript.bearAT;
+				if (battleScript.playerMovementScript.far) battleScript.playerHP -= battleScript.bearAT * 0.4f;
+				if (battleScript.playerMovementScript.middle) battleScript.playerHP -= battleScript.bearAT * 0.7f;
 				if (battleScript.playerMovementScript.near) battleScript.playerHP -= battleScript.bearAT;
 			}
 			else if ((bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 4 || bearMovementScript.positionIndex == battleScript.dogMovementScript.positionIndex - 8) && !battleScript.dogDead)
 			{
-				if (battleScript.dogMovementScript.far) battleScript.dogHP -= battleScript.bearAT;
-				if (battleScript.dogMovementScript.middle) battleScript.dogHP -= battleScript.bearAT;
+				if (battleScript.dogMovementScript.far) battleScript.dogHP -= battleScript.bearAT * 0.4f;
+				if (battleScript.dogMovementScript.middle) battleScript.dogHP -= battleScript.bearAT * 0.7f;
 				if (battleScript.dogMovementScript.near) battleScript.dogHP -= battleScript.bearAT;
 			}
 			else

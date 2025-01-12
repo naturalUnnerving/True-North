@@ -254,7 +254,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		if (Input.GetKeyDown("w"))
+		if (Input.GetKeyDown("w") && !growl)
 		{
 			if (playerAPGauge >= 1f && !playerMovementScript.near)
 			{
@@ -272,7 +272,7 @@ public class Battle : MonoBehaviour
 			}
 		}
 		
-		if (Input.GetKeyDown("s"))
+		if (Input.GetKeyDown("s") && !growl)
 		{
 			if (playerAPGauge >= 1f && !playerMovementScript.far)
 			{
@@ -377,52 +377,6 @@ public class Battle : MonoBehaviour
 		if (Input.GetKeyDown("q")) dogAPGauge = 0f;
 	}
 	
-	// bear actions are called by bear AI. For now just autorun Swipe
-
-	void bearAction()
-	{
-		// DEBUG ONLY
-		// End turn
-		if (Input.GetKeyDown("q")) bearAPGauge = 0f;
-		
-		if (Input.GetKeyDown("r"))
-		{
-			bearScript.Growl();
-		}
-		
-		if (Input.GetKeyDown("f"))
-		{
-			bearScript.Swipe();
-		}
-		
-		if (Input.GetKeyDown("z"))
-		{
-			if (bearAPGauge >= 3f)
-			{
-				bearAPGauge -= 3f;
-				bearMovementScript.TurnLeft();
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
-		}
-		
-		if (Input.GetKeyDown("c"))
-		{
-			if (bearAPGauge >= 3f)
-			{
-				bearAPGauge -= 3f;
-				bearMovementScript.TurnRight();
-			}
-			else
-			{
-				Debug.Log("Not enough AP!");
-			}
-		}
-	}
-
-	
 	// Show game over screen and send back to title for now
 	void gameOver()
 	{
@@ -511,4 +465,118 @@ public class Battle : MonoBehaviour
 			return(true);	
 		}
 	}
+	
+	public void PlyerFire()
+	{
+        playerScript.Fire();
+    }
+
+	public void PlayerReload()
+	{
+        playerScript.Reload();
+    }
+
+	public void PlayerMoveLeft()
+	{
+		if (!growl)
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveLeft();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+	}
+
+	public void PlayerMoveRight()
+	{
+		if (!growl)
+		{
+			if (playerAPGauge >= 1f)
+			{
+				playerAPGauge -= 1f;
+				playerMovementScript.MoveRight();
+			}
+			else
+			{
+				Debug.Log("Not enough AP!");
+			}
+		}
+    }
+
+	public void PlayerQuit()
+	{
+        playerAPGauge = 0f;
+    }
+
+	public void DogBark()
+	{
+        dogScript.Bark();
+    }
+
+	public void DogBit()
+	{
+        dogScript.Bite();
+    }
+
+	public void DogMoveLeft()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveLeft();
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveRight()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveRight();
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveUp()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveUp();
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogMoveDown()
+	{
+        if (dogAPGauge >= 1f)
+        {
+            dogAPGauge -= 1f;
+            dogMovementScript.MoveDown();
+        }
+        else
+        {
+            Debug.Log("Not enough AP!");
+        }
+    }
+
+	public void DogQuit()
+	{
+        dogAPGauge = 0f;
+    }
 }
