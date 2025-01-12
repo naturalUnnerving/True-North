@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad132f3bc832b2d44b6cba6811b5f27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: Main
+  newGameScene: Bear Arena
   optionsScene: OptionsScreen
   titleScreenScene: 
 --- !u!1 &2106801135
