@@ -290,7 +290,7 @@ MonoBehaviour:
   growlAuraVFX: {fileID: 1130730178}
   swipeVFX: {fileID: 556470621}
   growlVFXDuration: 0.1
-  growlVFXDelay: 0.7
+  growlVFXDelay: 1.2
   growlAuraVFXDuration: 1.2
   swipeVFXDelay: 0.9
   swipeVFXDuration: 0.1
@@ -556,13 +556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308260121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.008, y: 0.101, z: -2.092}
+  m_LocalRotation: {x: 0.35876685, y: 0.60933274, z: 0.35876694, w: 0.6093326}
+  m_LocalPosition: {x: -0.056, y: 2.21, z: -0.562}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 192811805}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 60.978}
 --- !u!212 &308260123
 SpriteRenderer:
   m_ObjectHideFlags: 0
