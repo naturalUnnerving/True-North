@@ -290,7 +290,7 @@ MonoBehaviour:
   growlAuraVFX: {fileID: 1130730178}
   swipeVFX: {fileID: 556470621}
   growlVFXDuration: 0.1
-  growlVFXDelay: 0.7
+  growlVFXDelay: 1.2
   growlAuraVFXDuration: 1.2
   swipeVFXDelay: 0.9
   swipeVFXDuration: 0.1
@@ -556,13 +556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308260121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.008, y: 0.101, z: -2.092}
+  m_LocalRotation: {x: 0.35876685, y: 0.60933274, z: 0.35876694, w: 0.6093326}
+  m_LocalPosition: {x: -0.056, y: 2.21, z: -0.562}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 192811805}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 60.978}
 --- !u!212 &308260123
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2045,13 +2045,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130730178}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.105, z: -0.12}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.24, y: -0.354, z: -0.12}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 192811805}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!212 &1130730180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2093,7 +2093,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -889138800, guid: d7f1648e2e907bf4099618179e9053ed, type: 3}
+  m_Sprite: {fileID: 60282778, guid: 5cbe20f918ec90b4bb6005aca3fd4857, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3808,9 +3808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0ebb354b30be4c878e6de36a140a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
-  battle: {fileID: 1989869671}
-  battleScript: {fileID: 0}
 --- !u!1001 &3665848827789846561
 PrefabInstance:
   m_ObjectHideFlags: 0
