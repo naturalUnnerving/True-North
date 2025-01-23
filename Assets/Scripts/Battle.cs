@@ -16,6 +16,9 @@ public class Battle : MonoBehaviour
 	
 	// Pause the game
 	bool paused = false;
+
+	//options screen is on
+	bool optionsOn = false;
 	
 	// Random bear turn direction
 	public int bearTurnDirection;
@@ -39,6 +42,9 @@ public class Battle : MonoBehaviour
 	public GameObject player;
 	public GameObject dog;
 	public GameObject bear;
+	public GameObject optionsScreenPrefab;
+
+	
 	
 	// Actor scripts
 	public Player playerScript;
@@ -54,6 +60,8 @@ public class Battle : MonoBehaviour
 	[SerializeField] private string OptionsScreen;
 	[SerializeField] private string TitleScreen;
 	[SerializeField] private string BattleScene;
+
+	
 	
 	// Music system
 	public AudioSource audioSource;
@@ -90,6 +98,8 @@ public class Battle : MonoBehaviour
 		playerMovementScript = player.GetComponent<CharacterMovement>();
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
 		bearMovementScript = bear.GetComponent<BearMovement>();
+
+		optionsScreenPrefab.SetActive(false);
 		
 		// Initialize battle flags
 		wait = false;
@@ -437,17 +447,38 @@ public class Battle : MonoBehaviour
 	// Pause the game
 	void OnGUI()
 	{
-		if(paused)
+		//if the game is paused and the options screen is not showing, display this GUI Layout
+		if(paused && !optionsOn)
 		{
 			GUILayout.Label("Paused");
-			if(GUILayout.Button("Resume")) paused = togglePause();
-			if(GUILayout.Button("Options")) SceneManager.LoadSceneAsync(OptionsScreen);
+			if(GUILayout.Button("Resume")) 
+			{
+				paused = togglePause();
+			}
+			if(GUILayout.Button("Options")) 
+			{
+				//Old Method that calls the Options Scene
+				//SceneManager.LoadSceneAsync(OptionsScreen);
+
+				//New Method that shows the Options Prefab
+				optionsScreenPrefab.SetActive(true);
+				optionsOn = true;
+
+			}
 			if(GUILayout.Button("Return to title"))
 			{
 				SceneManager.UnloadSceneAsync(BattleScene);
 				SceneManager.LoadScene(TitleScreen);
 			}
 		}
+	}
+
+	//this function is used in the back button inside of the PauseUI gameObject
+	public void disablePauseScreen()
+	{
+		optionsScreenPrefab.SetActive(false);
+		optionsOn = false;
+
 	}
 	
 	bool togglePause()
@@ -466,7 +497,7 @@ public class Battle : MonoBehaviour
 		}
 	}
 	
-	public void PlyerFire()
+	public void PlayerFire()
 	{
         playerScript.Fire();
     }
