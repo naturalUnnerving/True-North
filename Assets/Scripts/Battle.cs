@@ -42,7 +42,7 @@ public class Battle : MonoBehaviour
 	public GameObject player;
 	public GameObject dog;
 	public GameObject bear;
-	public GameObject optionsScreenPrefab;
+	public GameObject options;
 
 	
 	
@@ -98,8 +98,6 @@ public class Battle : MonoBehaviour
 		playerMovementScript = player.GetComponent<CharacterMovement>();
 		dogMovementScript = dog.GetComponent<CharacterMovement>();
 		bearMovementScript = bear.GetComponent<BearMovement>();
-
-		optionsScreenPrefab.SetActive(false);
 		
 		// Initialize battle flags
 		wait = false;
@@ -461,7 +459,7 @@ public class Battle : MonoBehaviour
 				//SceneManager.LoadSceneAsync(OptionsScreen);
 
 				//New Method that shows the Options Prefab
-				optionsScreenPrefab.SetActive(true);
+				options.SetActive(true);
 				optionsOn = true;
 
 			}
@@ -476,9 +474,8 @@ public class Battle : MonoBehaviour
 	//this function is used in the back button inside of the PauseUI gameObject
 	public void disablePauseScreen()
 	{
-		optionsScreenPrefab.SetActive(false);
+		options.SetActive(false);
 		optionsOn = false;
-
 	}
 	
 	bool togglePause()
