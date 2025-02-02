@@ -9,8 +9,11 @@ public class OverworldDogMovement : MonoBehaviour
     private Animator anim;	
     private Rigidbody rbody;
 
-    //We will use the x and z parameters to determine how far the player is from the dog.
-    [SerializeField] private Vector3 maxDistanceBetweenCharacters;
+
+    [SerializeField] private float speed;
+    [SerializeField] private float distance;
+   
+    [SerializeField] private float maxDistanceBetweenCharacters;
 
 
     private void Awake() {
@@ -27,8 +30,12 @@ public class OverworldDogMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponentInChildren<Rigidbody>().velocity != Vector3.zero) {
+        distance = Vector3.Distance(this.transform.position, player.transform.position);
+
+        
+        if (distance >= maxDistanceBetweenCharacters) {
             //Move
+            this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
 }

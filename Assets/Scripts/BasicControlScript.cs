@@ -17,6 +17,8 @@ public class BasicControlScript : MonoBehaviour
     public float jumpableGroundNormalMaxAngle = 45f;
     public bool closeToJumpableGround;
 
+    [SerializeField] private Vector3 velocity;
+
 
     void Awake()
     {
@@ -26,6 +28,10 @@ public class BasicControlScript : MonoBehaviour
         if (cinput == null)
             Debug.Log("CharacterInputController could not be found");
 
+    }
+
+    private void Start() {
+        velocity = rbody.velocity;
     }
 
 
