@@ -23,6 +23,9 @@ public class CharacterMovement : MonoBehaviour
 	public bool far;
 	public bool middle;
 	public bool near;
+
+	// Animation
+	private Animator anim;
 	
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,7 @@ public class CharacterMovement : MonoBehaviour
 		near = false;
 
 		CurrentAngle = character.transform.eulerAngles.y;
+		anim = GetComponentInChildren<Animator>();
 		//faceBear();
     }
 
@@ -84,6 +88,7 @@ public class CharacterMovement : MonoBehaviour
 			middle = true;
 			near = false;
 			positionIndex = positionIndex + 4;
+			playRunAnimation();
 		}
 		else if (!far && middle && !near)
 		{
@@ -91,6 +96,7 @@ public class CharacterMovement : MonoBehaviour
 			middle = false;
 			near = true;
 			positionIndex = positionIndex + 4;
+			playRunAnimation();
 		}
 		else if (!far && !middle && near)
 		{
@@ -114,6 +120,7 @@ public class CharacterMovement : MonoBehaviour
 			middle = false;
 			near = false;
 			positionIndex = positionIndex - 4;
+			playRunAnimation();
 		}
 		else if (!far && !middle && near)
 		{
@@ -121,6 +128,7 @@ public class CharacterMovement : MonoBehaviour
 			middle = true;
 			near = false;
 			positionIndex = positionIndex - 4;
+			playRunAnimation();
 		}
 		character.destination = characterPositions[positionIndex];
 		faceTarget();
@@ -146,6 +154,7 @@ public class CharacterMovement : MonoBehaviour
 			if (positionIndex < 8) positionIndex = 11;
 		}
 		character.destination = characterPositions[positionIndex];
+		playRunAnimation();
 
 		faceTarget();
 	}
@@ -170,9 +179,19 @@ public class CharacterMovement : MonoBehaviour
 			if (positionIndex > 11) positionIndex = 8;
 		}
 		character.destination = characterPositions[positionIndex];
+		playRunAnimation();
 
 		faceTarget();
     }
+
+	public void playRunAnimation()
+	{
+		// Play running animation
+		if (anim != null)
+		{
+			anim.Play("Base Layer.RIG-Armature|runStart", 0, 0f);
+		}
+	}
 	
 	// Gradually turn the dog towards the bear
 	public void faceBear()
@@ -186,6 +205,11 @@ public class CharacterMovement : MonoBehaviour
 	// Gradually turn bear towards target
 	public void faceTarget()
 	{
+		// Stop running animation
+		if (anim != null)
+		{
+			anim.SetTrigger("StopRunning");
+		}
 		Vector3 moveDirection = characterPositions[positionIndex] - character.transform.position;
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
         targetAngel = angle;
