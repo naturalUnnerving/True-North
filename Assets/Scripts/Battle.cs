@@ -43,6 +43,7 @@ public class Battle : MonoBehaviour
 	public GameObject dog;
 	public GameObject bear;
 	public GameObject options;
+	public GameObject pause;
 
 	
 	
@@ -57,7 +58,6 @@ public class Battle : MonoBehaviour
 	//Scenes
 	[SerializeField] private string victoryScreen;
 	[SerializeField] private string gameOverScreen;
-	[SerializeField] private string OptionsScreen;
 	[SerializeField] private string TitleScreen;
 	[SerializeField] private string BattleScene;
 
@@ -137,7 +137,10 @@ public class Battle : MonoBehaviour
     void Update()
     {
 		// Pause the game
-		if(Input.GetKeyDown(KeyCode.Escape)) paused = togglePause();
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			paused = togglePause();
+			PauseGame();
+		}
 		
 		//Checks Players current Health State
         if (playerHP <= 0f)
@@ -443,39 +446,71 @@ public class Battle : MonoBehaviour
 	}
 	
 	// Pause the game
-	void OnGUI()
+	void PauseGame()
 	{
 		//if the game is paused and the options screen is not showing, display this GUI Layout
+		// if(paused && !optionsOn)
+		// {
+		// 	GUILayout.Label("Paused");
+		// 	if(GUILayout.Button("Resume")) 
+		// 	{
+		// 		paused = togglePause();
+		// 	}
+		// 	if(GUILayout.Button("Options")) 
+		// 	{
+
+		// 		//New Method that shows the Options Prefab
+		// 		options.SetActive(true);
+		// 		optionsOn = true;
+
+		// 	}
+		// 	if(GUILayout.Button("Return to title"))
+		// 	{
+		// 		SceneManager.UnloadSceneAsync(BattleScene);
+		// 		SceneManager.LoadScene(TitleScreen);
+		// 	}
+		// }
+
 		if(paused && !optionsOn)
 		{
-			GUILayout.Label("Paused");
-			if(GUILayout.Button("Resume")) 
-			{
-				paused = togglePause();
-			}
-			if(GUILayout.Button("Options")) 
-			{
-				//Old Method that calls the Options Scene
-				//SceneManager.LoadSceneAsync(OptionsScreen);
-
-				//New Method that shows the Options Prefab
-				options.SetActive(true);
-				optionsOn = true;
-
-			}
-			if(GUILayout.Button("Return to title"))
-			{
-				SceneManager.UnloadSceneAsync(BattleScene);
-				SceneManager.LoadScene(TitleScreen);
-			}
+			pause.SetActive(true);
+		}
+		else if(!paused && !optionsOn)
+		{
+			pause.SetActive(false);
 		}
 	}
 
-	//this function is used in the back button inside of the PauseUI gameObject
-	public void disablePauseScreen()
+	public void ResumeGame()
 	{
-		options.SetActive(false);
-		optionsOn = false;
+		paused = togglePause();
+		pause.SetActive(false);
+	}
+
+	public void ReturnToTitle()
+	{
+		SceneManager.UnloadSceneAsync(BattleScene);
+		SceneManager.LoadScene(TitleScreen);
+	}
+
+	public void DisablePauseScreen(){
+		pause.SetActive(false);
+		paused = togglePause();
+	}
+
+	//this function is used in the back button inside of the PauseUI gameObject
+	public void HandleOptionsScreen()
+	{
+		if(optionsOn)
+		{
+			options.SetActive(false);
+			optionsOn = false;
+		}
+		else
+		{
+			options.SetActive(true);
+			optionsOn = true;
+		}
 	}
 	
 	bool togglePause()
