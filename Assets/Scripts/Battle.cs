@@ -210,9 +210,24 @@ public class Battle : MonoBehaviour
 				// Switch case for turn
 				switch (currentTurn)
 				{
-					case Turn.player: playerAction(); break;
-					case Turn.dog: dogAction(); break;
-					case Turn.bear: bearScript.AI(); break;
+					case Turn.player: 
+					{
+						playerAction(); 
+						UIManager.Instance.ShowPlayerPanel();
+						break;
+					}
+					case Turn.dog: 
+					{
+						dogAction(); 
+						UIManager.Instance.ShowDogPanel();
+						break;
+					}
+					case Turn.bear: 
+					{
+						bearScript.AI(); 
+						UIManager.Instance.HideAllPanel();
+						break;
+					}
 				}
 			}
 			else
