@@ -329,6 +329,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayRunAnimation();
 				dogMovementScript.MoveLeft();
 				endAction();
 			}
@@ -343,6 +345,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayRunAnimation();
 				dogMovementScript.MoveRight();
 				endAction();
 			}
@@ -357,6 +361,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.near)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayRunAnimation();
 				dogMovementScript.MoveUp();
 				endAction();
 			}
@@ -375,6 +381,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.far)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayRunAnimation();
 				dogMovementScript.MoveDown();
 				endAction();
 			}
@@ -430,6 +438,7 @@ public class Battle : MonoBehaviour
 			if (timer >= 0.8f)
 			{
 				wait = false;
+				dogScript.StopRunAnimation();
 			}
 			else
 			{
@@ -543,7 +552,9 @@ public class Battle : MonoBehaviour
         if (dogAPGauge >= 1f)
         {
             dogAPGauge -= 1f;
+			
             dogMovementScript.MoveLeft();
+			
         }
         else
         {
@@ -557,6 +568,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveRight();
+			
         }
         else
         {
@@ -570,6 +582,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveUp();
+			
         }
         else
         {
@@ -583,6 +596,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveDown();
+			
         }
         else
         {

@@ -99,4 +99,24 @@ public class Dog : MonoBehaviour
 				Debug.Log("Not enough AP!");
 			}
 	}
+
+	public void PlayRunAnimation()
+	{
+		// Play running animation
+		if (anim != null)
+		{
+			Debug.Log("Run Animation");
+			anim.Play("Base Layer.RIG-Armature|runStart", 0, 0f);
+		}
+	}
+
+	public void StopRunAnimation()
+	{
+		// Play running animation
+		if (anim != null)
+		{
+			Debug.Log("Stop Animation");
+			anim.SetTrigger("StopRunning");
+		}
+	}
 }

@@ -23,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
 	public bool far;
 	public bool middle;
 	public bool near;
+
 	
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,7 @@ public class CharacterMovement : MonoBehaviour
 		near = false;
 
 		CurrentAngle = character.transform.eulerAngles.y;
+
 		//faceBear();
     }
 
@@ -91,6 +93,7 @@ public class CharacterMovement : MonoBehaviour
 			middle = false;
 			near = true;
 			positionIndex = positionIndex + 4;
+			
 		}
 		else if (!far && !middle && near)
 		{
@@ -146,6 +149,7 @@ public class CharacterMovement : MonoBehaviour
 			if (positionIndex < 8) positionIndex = 11;
 		}
 		character.destination = characterPositions[positionIndex];
+		
 
 		faceTarget();
 	}
@@ -170,10 +174,12 @@ public class CharacterMovement : MonoBehaviour
 			if (positionIndex > 11) positionIndex = 8;
 		}
 		character.destination = characterPositions[positionIndex];
+		
 
 		faceTarget();
     }
-	
+
+
 	// Gradually turn the dog towards the bear
 	public void faceBear()
 	{
@@ -186,6 +192,14 @@ public class CharacterMovement : MonoBehaviour
 	// Gradually turn bear towards target
 	public void faceTarget()
 	{
+		// Stop running animation
+		/*
+		if (anim != null)
+		{
+			Debug.Log("Stop Running");
+			anim.SetTrigger("StopRunning");
+		}
+		*/
 		Vector3 moveDirection = characterPositions[positionIndex] - character.transform.position;
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
         targetAngel = angle;
