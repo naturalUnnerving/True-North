@@ -13,7 +13,8 @@ public class ScreenFuntions : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private float volume = 1f;
     [SerializeField] private AudioRefSO audioRefSO;
-    [SerializeField] private float buttonTimer = 2f;
+    //[SerializeField] private float buttonTimer = 2f;
+    [SerializeField] private float buttonTimeDelay = 0.5f;
 
     [Header("Buttons")]
     [SerializeField] private Button startButton;
@@ -64,27 +65,27 @@ public class ScreenFuntions : MonoBehaviour
     public void NewGame()
     {
         startButton.GetComponentInChildren<AudioSource>().PlayOneShot(audioRefSO.startClick, volume);
-        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.startClick.length + 0.5f));
+        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.startClick.length + buttonTimeDelay));
         SceneManager.LoadScene(newGameScene);
     }
     public void Options()
     {
         optionsButton.GetComponentInChildren<AudioSource>().PlayOneShot(audioRefSO.mouseClick, volume);
-        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + 0.5f));
+        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + buttonTimeDelay));
         SceneManager.LoadScene(optionsScene);
     }
 
     public void TitleScreen()
     {
         titleButton.GetComponentInChildren<AudioSource>().PlayOneShot(audioRefSO.mouseClick, volume);
-        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + 0.5f));
+        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + buttonTimeDelay));
         SceneManager.LoadScene(titleScreenScene);
     }
 
     public void QuitGame()
     {
         quitButton.GetComponentInChildren<AudioSource>().PlayOneShot(audioRefSO.mouseClick, volume);
-        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + 0.5f));
+        StartCoroutine(ButtonTimerBeforeSceneSwitch(audioRefSO.mouseClick.length + buttonTimeDelay));
         Application.Quit();
     }
 
