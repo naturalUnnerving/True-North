@@ -100,22 +100,22 @@ public class Dog : MonoBehaviour
 			}
 	}
 
-	public void PlayRunAnimation()
+	public void PlayDogRunAnimation()
 	{
 		// Play running animation
 		if (anim != null)
 		{
-			Debug.Log("Run Animation");
+			Debug.Log("Dog Run Animation");
 			anim.Play("Base Layer.RIG-Armature|runStart", 0, 0f);
 		}
 	}
 
-	public void StopRunAnimation()
+	public void StopDogRunAnimation()
 	{
 		// Play running animation
 		if (anim != null)
 		{
-			Debug.Log("Stop Animation");
+			Debug.Log("Stop Dog Animation");
 			anim.SetTrigger("StopRunning");
 		}
 	}
