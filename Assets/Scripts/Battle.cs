@@ -58,6 +58,8 @@ public class Battle : MonoBehaviour
 	// Music system
 	public AudioSource audioSource;
 
+	public AudioRefSO audioRefSO;
+
     //Creates enumerators for the different game states
     public enum HealthState
     {

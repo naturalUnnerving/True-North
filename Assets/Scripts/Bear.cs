@@ -21,6 +21,8 @@ public class Bear : MonoBehaviour
 	// Animation
 	private Animator anim;
 
+	private AudioSource audioSource;
+
 	// raycast for bite
 	Ray ray;
 	RaycastHit hitData;
@@ -47,6 +49,7 @@ public class Bear : MonoBehaviour
 		battleScript = battle.GetComponent<Battle>();
 		anim = GetComponentInChildren<Animator>();
 		bearMovementScript = battleScript.bear.GetComponent<BearMovement>();
+		audioSource = GetComponentInChildren<AudioSource>();
 	}
 
 	void Update()
@@ -61,6 +64,8 @@ public class Bear : MonoBehaviour
 		{
 			// DEBUG CALL
 			Debug.Log("BEAR GROWL");
+
+			audioSource.PlayOneShot(battleScript.audioRefSO.bearRoar, 1f);
 		
 			// Play growl animation and sound
 			if (anim != null)
