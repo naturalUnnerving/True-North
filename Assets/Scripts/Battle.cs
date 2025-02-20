@@ -16,6 +16,9 @@ public class Battle : MonoBehaviour
 	
 	// Pause the game
 	bool paused = false;
+
+	//options screen is on
+	bool optionsOn = false;
 	
 	// Random bear turn direction
 	public int bearTurnDirection;
@@ -39,6 +42,10 @@ public class Battle : MonoBehaviour
 	public GameObject player;
 	public GameObject dog;
 	public GameObject bear;
+	public GameObject options;
+	public GameObject pause;
+
+	
 	
 	// Actor scripts
 	public Player playerScript;
@@ -51,9 +58,10 @@ public class Battle : MonoBehaviour
 	//Scenes
 	[SerializeField] private string victoryScreen;
 	[SerializeField] private string gameOverScreen;
-	[SerializeField] private string OptionsScreen;
 	[SerializeField] private string TitleScreen;
 	[SerializeField] private string BattleScene;
+
+	
 	
 	// Music system
 	public AudioSource audioSource;
@@ -129,7 +137,10 @@ public class Battle : MonoBehaviour
     void Update()
     {
 		// Pause the game
-		if(Input.GetKeyDown(KeyCode.Escape)) paused = togglePause();
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			paused = togglePause();
+			PauseGame();
+		}
 		
 		//Checks Players current Health State
         if (playerHP <= 0f)
@@ -166,6 +177,8 @@ public class Battle : MonoBehaviour
 		if (playerAPGauge <= 0f)
 		{
 			playerAPGauge = playerScript.AP.Value;
+			playerScript.StopPlayerRunAnimation();
+
 			if (dogDead)
 			{
 				currentTurn = Turn.bear;
@@ -180,6 +193,8 @@ public class Battle : MonoBehaviour
 		if (dogAPGauge <= 0f)
 		{
 			dogAPGauge = dogScript.AP.Value;
+			dogScript.StopDogRunAnimation();
+
 			currentTurn = Turn.bear;
 		}
 		
@@ -246,6 +261,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveLeft();
 				endAction();
 			}
@@ -260,6 +276,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveRight();
 				endAction();
 			}
@@ -274,11 +291,13 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f && !playerMovementScript.near)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveUp();
 				endAction();
 			}
 			else if (playerMovementScript.near)
 			{
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveUp();
 			}
 			else
@@ -292,11 +311,13 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f && !playerMovementScript.far)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveDown();
 				endAction();
 			}
 			else if (playerMovementScript.far)
 			{
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveDown();
 			}
 			else
@@ -329,6 +350,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveLeft();
 				endAction();
 			}
@@ -343,6 +366,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveRight();
 				endAction();
 			}
@@ -357,11 +382,14 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.near)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveUp();
 				endAction();
 			}
 			else if (dogMovementScript.near)
 			{
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveUp();
 			}
 			else
@@ -375,11 +403,14 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.far)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveDown();
 				endAction();
 			}
 			else if (dogMovementScript.far)
 			{
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveDown();
 			}
 			else
@@ -419,6 +450,7 @@ public class Battle : MonoBehaviour
 			if (timer >= 0.8f)
 			{
 				wait = false;
+				playerScript.StopPlayerRunAnimation();
 			}
 			else
 			{
@@ -430,6 +462,7 @@ public class Battle : MonoBehaviour
 			if (timer >= 0.8f)
 			{
 				wait = false;
+				dogScript.StopDogRunAnimation();
 			}
 			else
 			{
@@ -450,18 +483,70 @@ public class Battle : MonoBehaviour
 	}
 	
 	// Pause the game
-	void OnGUI()
+	void PauseGame()
 	{
-		if(paused)
+		//if the game is paused and the options screen is not showing, display this GUI Layout
+		// if(paused && !optionsOn)
+		// {
+		// 	GUILayout.Label("Paused");
+		// 	if(GUILayout.Button("Resume")) 
+		// 	{
+		// 		paused = togglePause();
+		// 	}
+		// 	if(GUILayout.Button("Options")) 
+		// 	{
+
+		// 		//New Method that shows the Options Prefab
+		// 		options.SetActive(true);
+		// 		optionsOn = true;
+
+		// 	}
+		// 	if(GUILayout.Button("Return to title"))
+		// 	{
+		// 		SceneManager.UnloadSceneAsync(BattleScene);
+		// 		SceneManager.LoadScene(TitleScreen);
+		// 	}
+		// }
+
+		if(paused && !optionsOn)
 		{
-			GUILayout.Label("Paused");
-			if(GUILayout.Button("Resume")) paused = togglePause();
-			if(GUILayout.Button("Options")) SceneManager.LoadSceneAsync(OptionsScreen);
-			if(GUILayout.Button("Return to title"))
-			{
-				SceneManager.UnloadSceneAsync(BattleScene);
-				SceneManager.LoadScene(TitleScreen);
-			}
+			pause.SetActive(true);
+		}
+		else if(!paused && !optionsOn)
+		{
+			pause.SetActive(false);
+		}
+	}
+
+	public void ResumeGame()
+	{
+		paused = togglePause();
+		pause.SetActive(false);
+	}
+
+	public void ReturnToTitle()
+	{
+		SceneManager.UnloadSceneAsync(BattleScene);
+		SceneManager.LoadScene(TitleScreen);
+	}
+
+	public void DisablePauseScreen(){
+		pause.SetActive(false);
+		paused = togglePause();
+	}
+
+	//this function is used in the back button inside of the PauseUI gameObject
+	public void HandleOptionsScreen()
+	{
+		if(optionsOn)
+		{
+			options.SetActive(false);
+			optionsOn = false;
+		}
+		else
+		{
+			options.SetActive(true);
+			optionsOn = true;
 		}
 	}
 	
@@ -481,7 +566,7 @@ public class Battle : MonoBehaviour
 		}
 	}
 	
-	public void PlyerFire()
+	public void PlayerFire()
 	{
         playerScript.Fire();
     }
@@ -543,7 +628,9 @@ public class Battle : MonoBehaviour
         if (dogAPGauge >= 1f)
         {
             dogAPGauge -= 1f;
+			
             dogMovementScript.MoveLeft();
+			
         }
         else
         {
@@ -557,6 +644,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveRight();
+			
         }
         else
         {
@@ -570,6 +658,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveUp();
+			
         }
         else
         {
@@ -583,6 +672,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveDown();
+			
         }
         else
         {

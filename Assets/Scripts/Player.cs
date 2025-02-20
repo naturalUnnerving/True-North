@@ -128,4 +128,25 @@ public class Player : MonoBehaviour
 			Debug.Log("Not enough AP!");
 		}
 	}
+
+	public void PlayPlayerRunAnimation()
+	{
+		// Play running animation
+		if (anim != null)
+		{
+			Debug.Log("Player Run Animation");
+			anim.Play("Base Layer.RIG-matagiHunter_arm|hunter_runStart", 0, 0f);
+			anim.Play("Weapon Layer.Murata22Armtr|hunter_runStart", 1, 0f);
+		}
+	}
+
+	public void StopPlayerRunAnimation()
+	{
+		// Play running animation
+		if (anim != null)
+		{
+			Debug.Log("Stop Player Animation");
+			anim.SetTrigger("StopRunning");
+		}
+	}
 }
