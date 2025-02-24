@@ -23,6 +23,10 @@ public class SettingsScript : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
+            if (i >= 1 && resolutions[i].width == resolutions[i - 1].width && resolutions[i].height == resolutions[i - 1].height)
+            {
+                continue;
+            }
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
