@@ -25,8 +25,8 @@ public class OverworldDogMovement : MonoBehaviour
     private void Awake() {
         dogNav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
-        rbody = GetComponentInChildren<Rigidbody>();
-        speed = player.GetComponent<BasicControlScript>().forwardMaxSpeed - (player.GetComponent<BasicControlScript>().forwardMaxSpeed * .2f);
+        rbody = GetComponent<Rigidbody>();
+        speed = player.GetComponent<OverworldPlayerController>().MoveSpeed - (player.GetComponent<OverworldPlayerController>().MoveSpeed * .2f);
         dogTargetPosition = player.transform.GetChild(0).gameObject;
     }
 
