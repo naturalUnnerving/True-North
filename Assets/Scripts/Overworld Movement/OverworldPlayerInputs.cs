@@ -19,6 +19,27 @@ public class OverworldPlayerInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
+    private OverworldMovement overworldMovement;
+
+    void Awake()
+    {
+        overworldMovement = new OverworldMovement();
+
+        overworldMovement.Player.Enable();
+        
+    }
+
+    void OnDestroy()
+    {
+        overworldMovement.Dispose();
+    }
+
+    void Update()
+    {
+        GetMoveInput();
+        GetLookInput();
+    }
+
     public void OnMove(InputValue value)
     {
         Debug.Log("Moving");
@@ -34,16 +55,22 @@ public class OverworldPlayerInputs : MonoBehaviour
         }
     }
     
-    public void Move(InputAction.CallbackContext context)
+    public void GetMoveInput()
     {
-        move = context.ReadValue<Vector2>();
+        Debug.Log("Moving");
+
+        move = overworldMovement.Player.Move.ReadValue<Vector2>();
     }
 
-    public void Look(InputAction.CallbackContext context)
+    public void GetLookInput()
     {
-        look = context.ReadValue<Vector2>();
+        if(cursorInputForLook)
+        {
+            Debug.Log("Looking");
+            look = overworldMovement.Player.Look.ReadValue<Vector2>();
+        }
     }
-    
+
 
     public void MoveInput(Vector2 newMoveDirection)
     {
