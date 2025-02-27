@@ -66,7 +66,7 @@ public class OverworldPlayerController : MonoBehaviour
     private float _cinemachineTargetPitch;
 
     // player
-    private float _speed;
+    [SerializeField] private float _speed;
     private float _animationBlend;
     private float _targetRotation = 0.0f;
     private float _rotationVelocity;
@@ -129,7 +129,7 @@ public class OverworldPlayerController : MonoBehaviour
         Debug.LogError( "Missing the New Input System");
 #endif
 
-        AssignAnimationIDs();
+        //AssignAnimationIDs();
        
         // reset our timeouts on start
         _fallTimeoutDelta = FallTimeout;

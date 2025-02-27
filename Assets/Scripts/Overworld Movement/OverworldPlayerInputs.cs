@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-#endif
+
 
 public class OverworldPlayerInputs : MonoBehaviour
 {
@@ -19,9 +19,9 @@ public class OverworldPlayerInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
-#if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
     {
+        Debug.Log("Moving");
         MoveInput(value.Get<Vector2>());
     }
 
@@ -29,12 +29,21 @@ public class OverworldPlayerInputs : MonoBehaviour
     {
         if(cursorInputForLook)
         {
+            Debug.Log("Looking");
             LookInput(value.Get<Vector2>());
         }
     }
+    
+    public void Move(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>();
+    }
 
-#endif
-
+    public void Look(InputAction.CallbackContext context)
+    {
+        look = context.ReadValue<Vector2>();
+    }
+    
 
     public void MoveInput(Vector2 newMoveDirection)
     {
