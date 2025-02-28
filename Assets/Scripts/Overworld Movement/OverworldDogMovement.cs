@@ -17,6 +17,9 @@ public class OverworldDogMovement : MonoBehaviour
 
 
     private float speed;
+
+    [Range(-0.5f, 0f)]
+    [SerializeField] private float speedAjustment = .2f;
     //private float distance;
    
     //[SerializeField] private float maxDistanceBetweenCharacters;
@@ -26,7 +29,7 @@ public class OverworldDogMovement : MonoBehaviour
         dogNav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         rbody = GetComponent<Rigidbody>();
-        speed = player.GetComponent<OverworldPlayerController>().MoveSpeed - (player.GetComponent<OverworldPlayerController>().MoveSpeed * .2f);
+        speed = player.GetComponent<OverworldPlayerController>().MoveSpeed - (player.GetComponent<OverworldPlayerController>().MoveSpeed * speedAjustment);
         dogTargetPosition = player.transform.GetChild(0).gameObject;
     }
 

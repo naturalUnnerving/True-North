@@ -42,6 +42,9 @@ public class OverworldPlayerController : MonoBehaviour
     [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
     public float GroundedRadius = 0.28f;
 
+    [Tooltip("The cube size of the grounded check.")]
+    public Vector3 GroundedCubeSize = Vector3.zero;
+
     [Tooltip("What layers the character uses as ground")]
     public LayerMask GroundLayers;
 
@@ -316,13 +319,20 @@ public class OverworldPlayerController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
+
     private void OnDrawGizmosSelected()
     {
-        Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-        Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+        Color transparentBlue = Color.blue;
+        Color transparentRed = Color.red;
 
-        if (Grounded) Gizmos.color = transparentGreen;
-        else Gizmos.color = transparentRed;
+        if (Grounded) 
+        {
+            Gizmos.color = transparentBlue;
+        }
+        else 
+        {
+            Gizmos.color = transparentRed;
+        }
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
         Gizmos.DrawSphere(
@@ -330,4 +340,27 @@ public class OverworldPlayerController : MonoBehaviour
             GroundedRadius);
     }
 
+
+    /*
+    void OnDrawGizmos()
+    {
+        Color transparentBlue = Color.blue;
+        Color transparentRed = Color.red;
+
+        if (Grounded) 
+        {
+            Gizmos.color = transparentBlue;
+        }
+        else 
+        {
+            Gizmos.color = transparentRed;
+        }
+
+        // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+        Gizmos.DrawSphere(
+            new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+            GroundedRadius);
+        
+    }
+    */
 }
