@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,16 +22,21 @@ public class OverworldPlayerInputs : MonoBehaviour
 
     private OverworldMovement overworldMovement;
 
+    public event EventHandler OnInteractPressed;
+
     void Awake()
     {
         overworldMovement = new OverworldMovement();
 
         overworldMovement.Player.Enable();
+
+        overworldMovement.Player.Interact.started += Interact_started;
         
     }
 
     void OnDestroy()
     {
+        overworldMovement.Player.Interact.started -= Interact_started;
         overworldMovement.Dispose();
     }
 
@@ -54,10 +60,17 @@ public class OverworldPlayerInputs : MonoBehaviour
             LookInput(value.Get<Vector2>());
         }
     }
+
+    private void Interact_started(InputAction.CallbackContext context)
+    {
+        //When the player presses the button, invoke event
+        OnInteractPressed?.Invoke(this, EventArgs.Empty);
+
+    }
     
     public void GetMoveInput()
     {
-        Debug.Log("Moving");
+        //Debug.Log("Moving");
 
         move = overworldMovement.Player.Move.ReadValue<Vector2>();
     }
@@ -66,7 +79,7 @@ public class OverworldPlayerInputs : MonoBehaviour
     {
         if(cursorInputForLook)
         {
-            Debug.Log("Looking");
+            //Debug.Log("Looking");
             look = overworldMovement.Player.Look.ReadValue<Vector2>();
         }
     }
