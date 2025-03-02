@@ -90,7 +90,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.8
   m_Radius: 0.38
-  m_SlopeLimit: 45
+  m_SlopeLimit: 90
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.01
@@ -110,11 +110,12 @@ MonoBehaviour:
   MoveSpeed: 7
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
-  Gravity: -15
+  Gravity: -9.81
   FallTimeout: 0.15
   Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
+  GroundedOffset: 0.6
+  GroundedRadius: 0.38
+  GroundedCubeSize: {x: 1.17, y: 0.18, z: 0.72}
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -181,6 +182,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4c3c7a40-e8d3-42ed-9de0-a7777732ba42
     m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d9aee8c1-617a-4c73-b29f-a728ee0789bd
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

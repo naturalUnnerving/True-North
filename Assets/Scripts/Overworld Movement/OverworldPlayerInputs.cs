@@ -31,6 +31,8 @@ public class OverworldPlayerInputs : MonoBehaviour
         overworldMovement.Player.Enable();
 
         overworldMovement.Player.Interact.started += Interact_started;
+
+        
         
     }
 
