@@ -89,7 +89,7 @@ public class OverworldPlayerController : MonoBehaviour
 //#if ENABLE_INPUT_SYSTEM 
     private PlayerInput _playerInput;
 //#endif
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
     private CharacterController _controller;
     private OverworldPlayerInputs _input;
     private GameObject _mainCamera;
