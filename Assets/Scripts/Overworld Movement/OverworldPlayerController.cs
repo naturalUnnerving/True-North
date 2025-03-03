@@ -84,18 +84,21 @@ public class OverworldPlayerController : MonoBehaviour
     private int _animIDGrounded;
     private int _animIDFreeFall;
     private int _animIDMotionSpeed;
+    private int _animIDWalking;
 
 //#if ENABLE_INPUT_SYSTEM 
     private PlayerInput _playerInput;
 //#endif
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
     private CharacterController _controller;
     private OverworldPlayerInputs _input;
     private GameObject _mainCamera;
 
     private const float _threshold = 0.01f;
 
-    private bool _hasAnimator;
+    public bool _hasAnimator;
+
+    //private bool _isWalking;
 
     private bool IsCurrentDeviceMouse
     {
@@ -122,8 +125,10 @@ public class OverworldPlayerController : MonoBehaviour
     private void Start()
     {
         _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+
+        _animator = GetComponentInChildren<Animator>();
         
-        _hasAnimator = TryGetComponent(out _animator);
+        _hasAnimator = _animator.isActiveAndEnabled;
         _controller = GetComponent<CharacterController>();
         _input = GetComponent<OverworldPlayerInputs>();
 #if ENABLE_INPUT_SYSTEM 
@@ -132,7 +137,7 @@ public class OverworldPlayerController : MonoBehaviour
         Debug.LogError( "Missing the New Input System");
 #endif
 
-        //AssignAnimationIDs();
+        AssignAnimationIDs();
        
         // reset our timeouts on start
         _fallTimeoutDelta = FallTimeout;
@@ -140,7 +145,7 @@ public class OverworldPlayerController : MonoBehaviour
 
     private void Update()
     {
-        _hasAnimator = TryGetComponent(out _animator);
+        _hasAnimator = _animator.isActiveAndEnabled;
 
         GravityController();
         GroundedCheck();
@@ -155,10 +160,11 @@ public class OverworldPlayerController : MonoBehaviour
 
     private void AssignAnimationIDs()
     {
-        _animIDSpeed = Animator.StringToHash("Speed");
-        _animIDGrounded = Animator.StringToHash("Grounded");
-        _animIDFreeFall = Animator.StringToHash("FreeFall");
-        _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        //_animIDSpeed = Animator.StringToHash("Speed");
+        //_animIDGrounded = Animator.StringToHash("Grounded");
+        //_animIDFreeFall = Animator.StringToHash("FreeFall");
+        //_animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        _animIDWalking = Animator.StringToHash("Walking");
     }
 
 
@@ -173,7 +179,7 @@ public class OverworldPlayerController : MonoBehaviour
         // update animator if using character
         if (_hasAnimator)
         {
-            _animator.SetBool(_animIDGrounded, Grounded);
+            //_animator.SetBool(_animIDGrounded, Grounded);
         }
     }
 
@@ -207,7 +213,15 @@ public class OverworldPlayerController : MonoBehaviour
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is no input, set the target speed to 0
-        if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+        if (_input.move == Vector2.zero) 
+        {
+            targetSpeed = 0.0f;
+
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDWalking, false);
+            }
+        }
 
         // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -249,6 +263,12 @@ public class OverworldPlayerController : MonoBehaviour
 
             // rotate to face input direction relative to camera position
             transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDWalking, true);
+            }
+
         }
 
 
@@ -261,8 +281,8 @@ public class OverworldPlayerController : MonoBehaviour
         // update animator if using character
         if (_hasAnimator)
         {
-            _animator.SetFloat(_animIDSpeed, _animationBlend);
-            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            //_animator.SetFloat(_animIDSpeed, _animationBlend);
+            //_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
         }
     }
 
@@ -276,7 +296,7 @@ public class OverworldPlayerController : MonoBehaviour
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDFreeFall, false);
+                //_animator.SetBool(_animIDFreeFall, false);
             }
 
             // stop our velocity dropping infinitely when grounded
@@ -299,7 +319,7 @@ public class OverworldPlayerController : MonoBehaviour
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDFreeFall, true);
+                    //_animator.SetBool(_animIDFreeFall, true);
                 }
             }
 
