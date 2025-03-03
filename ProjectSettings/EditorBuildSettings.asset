@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OptionsScreen.unity
     guid: 8d517f9b82b248645a38a23736a55e20
   - enabled: 1
+    path: Assets/Scenes/Levels/Overworld.unity
+    guid: 53d30c98b622d1a418ab40728a4d6563
+  - enabled: 1
     path: Assets/Scenes/VictoryScreen.unity
     guid: 659ff2f4d6f64d14a96ed36361d85c03
   - enabled: 1
@@ -23,4 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Bear Arena.unity
     guid: 133ad96cf26136e479aadd0fbcad6cd5
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: c2cef9e6eeade764fbb94ff03d207488, type: 2}

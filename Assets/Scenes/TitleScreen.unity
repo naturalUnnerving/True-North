@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad132f3bc832b2d44b6cba6811b5f27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: Bear Arena
+  newGameScene: Overworld
   optionsScene: OptionsScreen
   titleScreenScene: 
   volume: 1
