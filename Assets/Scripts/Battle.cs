@@ -66,6 +66,8 @@ public class Battle : MonoBehaviour
 	// Music system
 	public AudioSource audioSource;
 
+	public AudioRefSO audioRefSO;
+
     //Creates enumerators for the different game states
     public enum HealthState
     {
@@ -177,6 +179,8 @@ public class Battle : MonoBehaviour
 		if (playerAPGauge <= 0f)
 		{
 			playerAPGauge = playerScript.AP.Value;
+			playerScript.StopPlayerRunAnimation();
+
 			if (dogDead)
 			{
 				currentTurn = Turn.bear;
@@ -191,6 +195,8 @@ public class Battle : MonoBehaviour
 		if (dogAPGauge <= 0f)
 		{
 			dogAPGauge = dogScript.AP.Value;
+			dogScript.StopDogRunAnimation();
+
 			currentTurn = Turn.bear;
 		}
 		
@@ -257,6 +263,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveLeft();
 				endAction();
 			}
@@ -271,6 +278,7 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveRight();
 				endAction();
 			}
@@ -285,11 +293,13 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f && !playerMovementScript.near)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveUp();
 				endAction();
 			}
 			else if (playerMovementScript.near)
 			{
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveUp();
 			}
 			else
@@ -303,11 +313,13 @@ public class Battle : MonoBehaviour
 			if (playerAPGauge >= 1f && !playerMovementScript.far)
 			{
 				playerAPGauge -= 1f;
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveDown();
 				endAction();
 			}
 			else if (playerMovementScript.far)
 			{
+				playerScript.PlayPlayerRunAnimation();
 				playerMovementScript.MoveDown();
 			}
 			else
@@ -340,6 +352,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveLeft();
 				endAction();
 			}
@@ -354,6 +368,8 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveRight();
 				endAction();
 			}
@@ -368,11 +384,14 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.near)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveUp();
 				endAction();
 			}
 			else if (dogMovementScript.near)
 			{
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveUp();
 			}
 			else
@@ -386,11 +405,14 @@ public class Battle : MonoBehaviour
 			if (dogAPGauge >= 1f && !dogMovementScript.far)
 			{
 				dogAPGauge -= 1f;
+				Debug.Log("Run");
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveDown();
 				endAction();
 			}
 			else if (dogMovementScript.far)
 			{
+				dogScript.PlayDogRunAnimation();
 				dogMovementScript.MoveDown();
 			}
 			else
@@ -430,6 +452,7 @@ public class Battle : MonoBehaviour
 			if (timer >= 0.8f)
 			{
 				wait = false;
+				playerScript.StopPlayerRunAnimation();
 			}
 			else
 			{
@@ -441,6 +464,7 @@ public class Battle : MonoBehaviour
 			if (timer >= 0.8f)
 			{
 				wait = false;
+				dogScript.StopDogRunAnimation();
 			}
 			else
 			{
@@ -606,7 +630,9 @@ public class Battle : MonoBehaviour
         if (dogAPGauge >= 1f)
         {
             dogAPGauge -= 1f;
+			
             dogMovementScript.MoveLeft();
+			
         }
         else
         {
@@ -620,6 +646,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveRight();
+			
         }
         else
         {
@@ -633,6 +660,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveUp();
+			
         }
         else
         {
@@ -646,6 +674,7 @@ public class Battle : MonoBehaviour
         {
             dogAPGauge -= 1f;
             dogMovementScript.MoveDown();
+			
         }
         else
         {
