@@ -135,8 +135,8 @@ public class Player : MonoBehaviour
 		if (anim != null)
 		{
 			Debug.Log("Player Run Animation");
-			anim.Play("Base Layer.RIG-matagiHunter_arm|hunter_runStart", 0, 0f);
-			anim.Play("Weapon Layer.Murata22Armtr|hunter_runStart", 1, 0f);
+			anim.Play("Base Layer.RIG-matagiHunter_arm|hunter_runStartBattle", 0, 0f);
+			anim.Play("Weapon Layer.Murata22Armtr|hunter_runStartBattle", 1, 0f);
 		}
 	}
 
