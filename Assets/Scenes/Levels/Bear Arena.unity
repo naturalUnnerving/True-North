@@ -7625,7 +7625,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2055868247}
         m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: SetResolution
         m_Mode: 0
@@ -12137,7 +12137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0025635, y: -0.0011292}
+  m_AnchoredPosition: {x: -0.0025634766, y: -0.0011291504}
   m_SizeDelta: {x: -728.71, y: -401.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &775727677
@@ -22226,7 +22226,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2055868247}
         m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
@@ -24669,6 +24669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2055868246}
+  - component: {fileID: 2055868247}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -24699,9 +24700,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00097656, y: 1.4616}
+  m_AnchoredPosition: {x: -0.0009765625, y: 1.4616089}
   m_SizeDelta: {x: 706.7, y: 411.71}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2055868247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055868245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71bd17b8c89c724b8cd07489aa144f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 68efeeaed5101d647a380323f24c175f, type: 2}
+  resolutionDropdown: {fileID: 285082410}
 --- !u!1001 &2060208376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25036,7 +25051,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2055868247}
         m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: SetFullScreen
         m_Mode: 0
