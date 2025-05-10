@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Murata22Armtr|hunter.runStart
-      takeName: Murata22Armtr|hunter.runStart
-      internalID: -8260246870385967858
+      name: Murata22Armtr|hunter.runLoop
+      takeName: Murata22Armtr|hunter.runLoop
+      internalID: 5206293334810542700
       firstFrame: 0
       lastFrame: 12
       wrapMode: 0

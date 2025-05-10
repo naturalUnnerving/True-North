@@ -1,8 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +7,7 @@ public class OverworldBearScript : MonoBehaviour
     private SphereCollider sphere;
     [SerializeField] private GameObject worldCanvas;
 
-    //[SerializeField] private String battleSceneName;
-    [SerializeField] private SceneAsset battleScene;
+    [SerializeField] private string battleSceneName;
 
     private bool isPlayerClose;
 
@@ -36,8 +31,7 @@ public class OverworldBearScript : MonoBehaviour
         if(isPlayerClose)
         {
             Debug.Log("Can Start Battle");
-            SceneManager.LoadScene(battleScene.name);
-            //SceneManager.LoadScene(battleSceneName);
+            SceneManager.LoadScene(battleSceneName);
         }
         else
         {
